@@ -1,0 +1,124 @@
+body {
+    background-color:#080808;
+    color:#33b5e5;
+    font-family:Helvetica,"DejaVu Sans",Arial,Sans-Serif;
+}
+
+/* Body Formatting */
+
+.wrapper {
+    width: 90%;
+    margin: auto;
+    background-color: #212121;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    overflow:hidden;
+    -moz-box-shadow: 0 0 5px rgba(51,181,229,0.75);
+    -webkit-box-shadow: 0 0 5px rgba(51,181,229,0.75);
+    box-shadow: 0 0 5px rgba(51,181,229,0.75);
+}
+
+
+.title {
+    display:inline-block;
+    font-weight:bold;
+    font-size:30px;
+    float:left;
+}
+
+.foot {
+    font-size:10px;
+    text-decoration:none;
+    float:right;
+    width:700px;
+}
+
+.logo {
+    float:left;
+    margin-top:15px;
+}
+
+.content {
+    text-decoration:none;
+    float:left;
+    width:500px;
+    text-indent:25px;
+    clear:left;
+}
+
+
+/* Consistant formatting for all links */
+a {
+    color:#336699;
+    text-decoration:none;
+}
+
+/* want h1 to always float */
+h1,h2,h3 {
+    color: #007AA3;
+    float: left;
+    clear: left;
+}
+
+a:hover {
+    color:#699EBF;
+    text-decoration:none;
+}
+
+/* Nav bar */
+.menu {
+    list-style:none;
+    float:right;
+    margin-top:29px;
+}
+
+.nav-item {
+    float:left;
+}
+
+.nav-link:link, .nav-link:visited {
+    display:inline-block;
+    width:100px;
+    color:#eeeeee;
+    text-align:center;
+    text-decoration:none;
+    font-weight:bold;
+    padding:3px;
+    transition: color 0.1s linear;
+    -webkit-transition: color 0.1s linear;
+    border-bottom: 3px solid #007AA3;
+}
+
+.nav-link-current:link, .nav-link-current:visited {
+    display:inline-block;
+    width:100px;
+    color:#33B5E5;
+    text-align:center;
+    text-decoration:none;
+    font-weight:bold;
+    padding:3px;
+    transition: color 0.1s linear;
+    -webkit-transition: color 0.1s linear;
+    border-bottom: 3px solid #33B5E5;
+}
+
+.nav-link:hover, .nav-link:active {
+    color:#33b5e5;
+    border-bottom: 3px solid #33B5E5;
+    transition: border 0.1s ease;
+    -webkit-transition: border 0.1s ease;
+
+}
+
+/* line break */
+.line-separator {
+    height: 1px;
+    background: #336699;
+    border: 2px solid #313030;
+    -moz-box-shadow: 0 0 5px rgba(49,48,48,0.75);
+    -webkit-box-shadow: 0 0 5px rgba(49,48,48,0.75);
+    box-shadow: 0 0 5px rgba(49,48,48,0.75);
+    clear: left;
+    width: 50%;
+    margin: 10px;
+}

@@ -1,0 +1,37 @@
+---
+layout: default
+title: mrpokeylope.mooo.com Home 
+---
+
+<div class="wrapper">
+  <h1>Blog Posts</h1>
+      {% for post in paginator.posts %}
+      <div class="line-separator"></div>
+      <h2>{{ post.date | date_to_string }} &raquo; {{ post.title }}</h2>
+        <div class="post">
+            {{ post.content }}
+            <a href="{{ post.url }}">permalink</a>
+            <br>
+        </div>
+        <br><br><br>
+      {% endfor %}
+
+      <!-- Pagination links -->
+      <div class="line-separator"></div>
+      <div class="post">
+            {% if paginator.previous_page %}
+                <a href="page{{ paginator.previous_page }}"
+                    class="previous">Previous</a>
+                  {% else %}
+                      <span class="previous">Previous</span>
+                  {% endif %}
+                    <span class="page_number ">Page: {{ paginator.page }}
+                      of {{ paginator.total_pages }}</span>
+                  {% if paginator.next_page %}
+                    <a href="page{{ paginator.next_page }}"
+                      class="next">Next</a>
+                  {% else %}
+                     <span class="next ">Next</span>
+                  {% endif %}
+      </div>
+</div>

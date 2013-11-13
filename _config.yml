@@ -1,0 +1,7 @@
+name: mrpokeylope.mooo.com 
+markdown: rdiscount
+permalink: pretty
+pygments: true
+excerpt_separator: <!--more-->
+paginate: 5 
+paginate_path: "/page:num"
