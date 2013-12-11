@@ -1,41 +1,33 @@
 ---
 layout: post
-title: "OfflineIMAP Notifications"
+title: "Simple OfflineIMAP Notifications with libnotify"
 date: 2013-11-21
 categories: posts
 ---
-
-Before we begin, I will assume that anyone reading this already has a working 
-OfflineIMAP setup. OfflineIMAP is not a hard requirement though. Any mail sync 
-software that uses the Maildir format should work with little to no changes. 
-
-If you by chance do not have such a setup yet, and are interested, 
-go ahead and check out [this blog post][offlineimapblog] or the Arch Wiki's 
-articles on [OfflineIMAP][offlineimap] and [Mutt][mutt], but ignore
-instructions for setting up a cron job, as that is mainly what I am covering 
-in this post. 
-
-Mutt in combination with OfflineIMAP and Msmtp is easily the best mail setup
+ 
+Mutt in combination with OfflineIMAP and Msmtp is easily the least sucky mail setup
 I've used, but because of it's simplicity, it's missing one thing that I 
 like to have: visual notifications for new mail. In my [bspwm][bspwm] 
 and [dwm][dwm] setups, I like to keep mutt running in a terminal window, 
 in a dedicated workspace or tag respectively. Short of obsessively switching 
 back and forth to the mutt terminal, I don't have a clean and efficient 
-way to know immediately when I revieve a new email. 
-So I figured a good solution  was create a bash script to 
-check my maildirs after each time OfflineIMAP runs. With some googling and 
-some help from the fine people over on the Arch Linux forums, I got this 
-working with few issues. [[1]](#aside)
+way to know immediately when I revieve a new email.
 
-Now lets get started!
+I found some scripts that can accomplish this on the Arch Linux forums, but
+they were more complex than what I wanted. Instead I wrote a short bash script 
+to run OfflineIMAP and display the number of new emails, if any. With some googling and 
+some help from the fine people over on the Arch Linux forums, I got this working 
+with few issues. [[1]](#aside)
 
-Make sure that you have your OS' version of `libnotify` installed 
-before you begin. You will need a notification daemon for `notify-send` 
+The entire process was fairly straightforward, so here's a little how-to: 
+
+Make sure to have your OS' version of `libnotify` installed 
+before you begin, and a notification daemon for `notify-send` 
 to communicate with. I personally use [dunst][dunst] because it's 
 lightweight and simple to setup, but there are [many other choices][notify] 
 that also work.
 
-We can now put the following in a file called `offlineimap-notify.sh`: 
+We can put the following in a file called `offlineimap-notify.sh`: 
 
 ```bash
 #!/usr/bin/bash
@@ -43,11 +35,11 @@ We can now put the following in a file called `offlineimap-notify.sh`:
 #run OfflineIMAP once, with quiet interface
 offlineimap -o -q -u quiet
 
-#count new mail
+#count new mail for every maildir
 maildirnew="$HOME/Mail/*/*/new/"
 new="$(find $maildirnew -type f | wc -l)"
 
-#count old mail
+#count old mail for every maildir
 maildirold="$HOME/Mail/*/*/cur/"
 old="$(find $maildirold -type f | wc -l)"
 
@@ -66,9 +58,11 @@ on the location of your Maildirs.
 
 The `export DISPLAY=:0; export XAUTHORITY=~/.Xauthority;` part is neccessary, 
 in my case, when running the script from a cron job, since cron will normally 
-not have access to the environmental display variables. 
-If I am wrong about this or there is a better solution, I would be glad to 
-know about it.
+not have access to the environmental display variables. I also tried to use
+this script with a systemd timer unit, in a systemd User instance, but I 
+was unable to get it to display the notifcations, even though it was syncing
+my mail properly. If I can find a solution to this I will create a follow-up
+post with my findings.
 
 We can run the script every 3 minutes with cron:
 
@@ -98,9 +92,6 @@ scripting myself.
 
 <a name="aside">[[1]: Arch Linux forums scripting thread][aside]</a>
 
-[offlineimapblog]: http://pbrisbin.com/posts/mutt_gmail_offlineimap/
-[offlineimap]: https://wiki.archlinux.org/index.php/OfflineIMAP
-[mutt]: https://wiki.archlinux.org/index.php/Mutt
 [bspwm]: https://bbs.archlinux.org/viewtopic.php?id=149444
 [dwm]: http://dwm.suckless.org/
 [dunst]: https://www.archlinux.org/packages/community/x86_64/dunst/

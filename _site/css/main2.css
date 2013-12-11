@@ -104,7 +104,7 @@
 .post {
     float: left;
     clear: left;
-    width: 75%;
+    width: 80%;
     padding-bottom: 20px;
 }
 
@@ -132,12 +132,12 @@
 
 /* terminal */
 .post pre.terminal {
-  border: 1px solid #336699;
+  border: 1px solid #252822;
   background-color: #393939;
   color: #FFF;
   border-radius: 3px;
 }
 
 .post pre.terminal code {
-  background-color: #333;
+  background-color: #252822;
 }

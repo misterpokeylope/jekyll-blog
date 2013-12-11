@@ -1,6 +1,6 @@
 ---
 layout: default
-title: mrpokeylope.mooo.com Home 
+title: mister-pokeylope 
 ---
 
 <div class="wrapper">
@@ -20,18 +20,23 @@ title: mrpokeylope.mooo.com Home
       <div class="line-separator"></div>
       <div class="post">
             {% if paginator.previous_page %}
+              {% if paginator.previous_page == 1" %}
+                <a href="/"
+                    class="previous">Previous</a>
+              {% else %}
                 <a href="page{{ paginator.previous_page }}"
                     class="previous">Previous</a>
-                  {% else %}
+              {% endif %}
+            {% else %}
                       <span class="previous">Previous</span>
-                  {% endif %}
+            {% endif %}
                     <span class="page_number ">Page: {{ paginator.page }}
                       of {{ paginator.total_pages }}</span>
-                  {% if paginator.next_page %}
+            {% if paginator.next_page %}
                     <a href="page{{ paginator.next_page }}"
                       class="next">Next</a>
-                  {% else %}
+            {% else %}
                      <span class="next ">Next</span>
-                  {% endif %}
+            {% endif %}
       </div>
 </div>

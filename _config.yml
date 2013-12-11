@@ -1,5 +1,5 @@
-name: mrpokeylope.mooo.com 
-markdown: rdiscount
+name: mister-pokeylope 
+markdown: redcarpet
 permalink: pretty
 pygments: true
 excerpt_separator: <!--more-->

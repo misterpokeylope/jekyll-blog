@@ -7,7 +7,7 @@ body {
 /* Body Formatting */
 
 .wrapper {
-    width: 90%;
+    width: 900px;
     margin: auto;
     background-color: #212121;
     padding: 5px 10px 5px 10px;
@@ -121,4 +121,14 @@ a:hover {
     clear: left;
     width: 50%;
     margin: 10px;
+}
+
+/* Contacts */
+.contact {
+    float: left;
+    clear: left;
+}
+
+.contact span {
+    font-weight: bold;
 }

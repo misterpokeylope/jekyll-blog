@@ -122,3 +122,13 @@ a:hover {
     width: 50%;
     margin: 10px;
 }
+
+/* Contacts */
+.contact {
+    float: left;
+    clear: left;
+}
+
+.contact span {
+    font-weight: bold;
+}
