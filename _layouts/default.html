@@ -1,61 +1,77 @@
 <!DOCTYPE html>
 <html>
-    <head>
+  <head>
     <title>{{ page.title }}</title>
-        <link rel="stylesheet" type="text/css" href="/css/main.css">
-        <link rel="stylesheet" type="text/css" href="/css/syntax.css">
-        <link rel="stylesheet" type="text/css" href="/css/main2.css">
-        <meta charset="UTF-8"> 
-    </head>
-    <body>
-        <div class="wrapper">
-            <p class="title">mister-pokeylope</p>
-            <nav>
-                <ul class="menu">
-                    <li class="nav-item"><a class="nav-link"
-                        href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link"
-                        href="/about/">About</a></li>
-                    <li class="nav-item"><a class="nav-link"
-                        href="/contact/">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link"
-                         href="/archive">Archives</a></li>
-                </ul>
-            </nav> 
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/syntax.css">
+    <meta charset="UTF-8"> 
+  </head>
+  <body>
+    <div class="wrapper">
+      <h3>mister-pokeylope</h3>
+      <nav>
+        <ul class="menu">
+          <li class="nav-item">
+            {% if page.title == "mister-pokeylope" %}
+              <a class="nav-link-current" href="/">Home</a>
+            {% else %}
+              <a class="nav-link" href="/">Home</a> 
+            {% endif %}
+          </li>
+          <li class="nav-item">
+            {% if page.title == "About" %}
+              <a class="nav-link-current" href="/about/">About</a></li>
+            {% else %}
+              <a class="nav-link" href="/about/">About</a>
+            {% endif %}
+          </li>
+          <li class="nav-item">
+            {% if page.title == "Contact" %}
+              <a class="nav-link-current" href="/contact/">Contact</a>
+            {% else %}
+              <a class="nav-link" href="/contact/">Contact</a>
+            {% endif %}
+          </li>
+          <li class="nav-item">
+            {% if page.title == "Archives" %}
+              <a class="nav-link-current" href="/archive">Archives</a>
+            {% else %}
+              <a class="nav-link" href="/archive">Archives</a>
+            {% endif %}
+          </li>
+        </ul>
+      </nav> 
+    </div>
             
-        </div>
-            
-        <br>
-        {{ content }}  
-        <br>
+    <br>
+    {{ content }}  
+    <br>
 
-        <footer>
-            <div class="wrapper">
-                <a href="http://www.w3.org/html/logo/" class="logo"
-                    target="_blank">
-                    <img src="/html5-badge.png" width="165" height="64" 
-                    alt="HTML5 Powered with CSS3 / Styling, and Semantics" 
-                    title="HTML5 Powered with CSS3 / Styling, and Semantics">
-                </a>
-                <p class="foot">
-                    My intent is to keep this website HTML5 and CSS3
-                    compliant. All code has been validated with the <a  
-                        href="http://validator.w3.org/check?uri=http%3A%2F%2Fmrpokeylope.mooo.com%2F" 
-                        target="_blank">
-                        W3C Markup Validation Service</a> and the <a
-                        href="http://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fmrpokeylope.mooo.com%2F"
-                        target="_blank">
-                        W3 CSS Validation Service</a>. 
-                    CSS(3) vendor prefixes are used where available, with
-                    priortity given to Firefox and WebKit compatibility.
-                    Full and constant compatibility across all browers is not guaranteed. 
-                    <br>
-                    DNS services provided by <a
-                        href="http://freedns.afraid.org/" target="_blank">FreeDNS</a>.<br>
-                    Powered by <a href="http://nginx.org/" 
-                        target="_blank">nginx</a>.
-                </p>
-            </div>
-        </footer>
-    </body>
+    <footer>
+      <div class="wrapper">
+        <a href="http://www.w3.org/html/logo/" class="logo" 
+            target="_blank">
+          <img src="/html5-badge.png" width="165" height="64" 
+          alt="HTML5 Powered with CSS3 / Styling, and Semantics" 
+          title="HTML5 Powered with CSS3 / Styling, and Semantics">
+        </a>
+        <p class="foot">
+          My intent is to keep this website HTML5 and CSS3
+          compliant. All code has been validated with the <a  
+          href="http://validator.w3.org/check?uri=http%3A%2F%2Fmrpokeylope.mooo.com%2F" 
+          target="_blank"> W3C Markup Validation Service</a> and the <a 
+          href="http://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fmrpokeylope.mooo.com%2F"
+          target="_blank">W3 CSS Validation Service</a>. 
+          CSS(3) vendor prefixes are used where available, with
+          priortity given to Firefox and WebKit compatibility.
+          Full and constant compatibility across all browers is not guaranteed. 
+          <br>
+          DNS services provided by <a href="http://freedns.afraid.org/" 
+              target="_blank">FreeDNS</a>. Powered by <a href="http://nginx.org/" 
+              target="_blank">nginx</a>. Built using <a
+              href="http://jekyllrb.com/" target="_blank">Jekyll</a>.
+        </p>
+      </div>
+    </footer>
+  </body>
 </html>

@@ -17,7 +17,7 @@ I found some scripts that can accomplish this on the Arch Linux forums, but
 they were more complex than what I wanted. Instead I wrote a short bash script 
 to run OfflineIMAP and display the number of new emails, if any. With some googling and 
 some help from the fine people over on the Arch Linux forums, I got this working 
-with few issues. [[1]](#aside)
+with few issues.
 
 The entire process was fairly straightforward, so here's a little how-to: 
 
@@ -89,8 +89,6 @@ file names that are problematic, so ideally I should not see these issues.
 Any suggestions are more than welcome as I am still fairly new to bash
 scripting myself.
 ```
-
-<a name="aside">[[1]: Arch Linux forums scripting thread][aside]</a>
 
 [bspwm]: https://bbs.archlinux.org/viewtopic.php?id=149444
 [dwm]: http://dwm.suckless.org/

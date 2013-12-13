@@ -1,38 +1,48 @@
 <!DOCTYPE html>
 <html>
-    <head>
+  <head>
     <title>Why Jekyll?</title>
-        <link rel="stylesheet" type="text/css" href="/css/main.css">
-        <link rel="stylesheet" type="text/css" href="/css/syntax.css">
-        <link rel="stylesheet" type="text/css" href="/css/main2.css">
-        <meta charset="UTF-8"> 
-    </head>
-    <body>
-        <div class="wrapper">
-            <p class="title">mister-pokeylope</p>
-            <nav>
-                <ul class="menu">
-                    <li class="nav-item"><a class="nav-link"
-                        href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link"
-                        href="/about/">About</a></li>
-                    <li class="nav-item"><a class="nav-link"
-                        href="/contact/">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link"
-                         href="/archive">Archives</a></li>
-                </ul>
-            </nav> 
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/syntax.css">
+    <meta charset="UTF-8"> 
+  </head>
+  <body>
+    <div class="wrapper">
+      <h3>mister-pokeylope</h3>
+      <nav>
+        <ul class="menu">
+          <li class="nav-item">
             
-        </div>
+              <a class="nav-link" href="/">Home</a> 
             
-        <br>
-        <div class="wrapper">
+          </li>
+          <li class="nav-item">
+            
+              <a class="nav-link" href="/about/">About</a>
+            
+          </li>
+          <li class="nav-item">
+            
+              <a class="nav-link" href="/contact/">Contact</a>
+            
+          </li>
+          <li class="nav-item">
+            
+              <a class="nav-link" href="/archive">Archives</a>
+            
+          </li>
+        </ul>
+      </nav> 
+    </div>
+            
+    <br>
+    <div class="wrapper">
   <h2>Why Jekyll?</h2>
   <p class="meta">06 Dec 2013</p>
 
   <div class="post">
     <p>In my first post, I gave a couple of vague reasons why I decided to use Jekyll
-to create this webiste, as opposed to something like Ruby on Rails. Having 
+to create this website, as opposed to something like Ruby on Rails. Having 
 recently used Rails for a school project, I can understand the appeal of using such
 a framework. It can be used to create powerful dynamic web apps with a range of
 useful tools and features. But for what I wanted out of this website, Rails would 
@@ -40,7 +50,7 @@ be like bringing a nuclear missile to a water gun fight. It&#39;s simply offers 
 more features than what I need. </p>
 
 <p>Rails gives me the chance to build my own blog platform, while Jekyll <em>is</em> a 
-blog platform, that allows me to focus on the blog itself, rather than writing 
+blog platform, which allows me to focus on the blog itself, rather than writing 
 and maintaining everything. While it would give me complete
 control over every aspect of my website, I am simply not interested in this
 level of control for such a small website. I feel comparing
@@ -50,14 +60,14 @@ tools that both happen to be able to accomplish the same task. </p>
 <p>Since I&#39;m far more interested in showing what I like about Jekyll than I am in 
 comparing and contrasting Jekyll and Rails, I will keep the comparisons to a minimum. </p>
 
-<p>Jekyll is as it&#39;s website describes, &quot;a simple, blog-aware, static site
+<p>Jekyll is as its website describes, &quot;a simple, blog-aware, static site
 generator&quot;, nothing more, nothing less. Since it&#39;s just a ruby script, issuing 
 a simple <code>gem install jekyll</code> in a terminal is all it takes to have everything 
 installed, much like Rails. Again similar to Rails, one can then generate the
 scaffolding for a new blog by issuing <code>jekyll new blog</code>.</p>
 
 <p>This is where the two diverge however, with Jekyll taking a simpler path, as
-far as blogs are concerened. Navigating into a newly generated blog directory 
+far as blogs are concerned. Navigating into a newly generated blog directory 
 gives a simple directory structure.</p>
 
 <p><code>blog/</code></p>
@@ -114,8 +124,8 @@ title: Home
 and the complete page(s), along with any CSS, will be placed in the <code>_sites/</code> directory. 
 By just using the YAML front matter at the top of a page,
 any page on the website can how have the navbar and footer, eliminating
-redundancy or inconsistancies between creating multi-page websites. I found
-this to be a very simple method to create consistancy, while still maintaining
+redundancy or inconsistencies between creating multi-page websites. I found
+this to be a very simple method to create consistency, while still maintaining
 a certain level of control for each page.</p>
 
 <p>Since a huge reason to use Jekyll is for the blog features, it helps that
@@ -159,35 +169,33 @@ imagine switching to anything else any time soon.</p>
   </div>
 </div>
   
-        <br>
+    <br>
 
-        <footer>
-            <div class="wrapper">
-                <a href="http://www.w3.org/html/logo/" class="logo"
-                    target="_blank">
-                    <img src="/html5-badge.png" width="165" height="64" 
-                    alt="HTML5 Powered with CSS3 / Styling, and Semantics" 
-                    title="HTML5 Powered with CSS3 / Styling, and Semantics">
-                </a>
-                <p class="foot">
-                    My intent is to keep this website HTML5 and CSS3
-                    compliant. All code has been validated with the <a  
-                        href="http://validator.w3.org/check?uri=http%3A%2F%2Fmrpokeylope.mooo.com%2F" 
-                        target="_blank">
-                        W3C Markup Validation Service</a> and the <a
-                        href="http://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fmrpokeylope.mooo.com%2F"
-                        target="_blank">
-                        W3 CSS Validation Service</a>. 
-                    CSS(3) vendor prefixes are used where available, with
-                    priortity given to Firefox and WebKit compatibility.
-                    Full and constant compatibility across all browers is not guaranteed. 
-                    <br>
-                    DNS services provided by <a
-                        href="http://freedns.afraid.org/" target="_blank">FreeDNS</a>.<br>
-                    Powered by <a href="http://nginx.org/" 
-                        target="_blank">nginx</a>.
-                </p>
-            </div>
-        </footer>
-    </body>
+    <footer>
+      <div class="wrapper">
+        <a href="http://www.w3.org/html/logo/" class="logo" 
+            target="_blank">
+          <img src="/html5-badge.png" width="165" height="64" 
+          alt="HTML5 Powered with CSS3 / Styling, and Semantics" 
+          title="HTML5 Powered with CSS3 / Styling, and Semantics">
+        </a>
+        <p class="foot">
+          My intent is to keep this website HTML5 and CSS3
+          compliant. All code has been validated with the <a  
+          href="http://validator.w3.org/check?uri=http%3A%2F%2Fmrpokeylope.mooo.com%2F" 
+          target="_blank"> W3C Markup Validation Service</a> and the <a 
+          href="http://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fmrpokeylope.mooo.com%2F"
+          target="_blank">W3 CSS Validation Service</a>. 
+          CSS(3) vendor prefixes are used where available, with
+          priortity given to Firefox and WebKit compatibility.
+          Full and constant compatibility across all browers is not guaranteed. 
+          <br>
+          DNS services provided by <a href="http://freedns.afraid.org/" 
+              target="_blank">FreeDNS</a>. Powered by <a href="http://nginx.org/" 
+              target="_blank">nginx</a>. Built using <a
+              href="http://jekyllrb.com/" target="_blank">Jekyll</a>.
+        </p>
+      </div>
+    </footer>
+  </body>
 </html>

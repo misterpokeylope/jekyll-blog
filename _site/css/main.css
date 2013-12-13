@@ -46,6 +46,71 @@ body {
     clear:left;
 }
 
+/* Jekyll formatting */
+
+.posts {
+    list-style-type: none;
+    margin-bottom: 2em;
+    float: left;
+    clear: left;
+}
+
+.posts li {
+    line-height: 1.75em;
+    float: left;
+    clear: left;
+}
+
+.posts span {
+    color: #aaa;
+    font-size: 80%;
+}
+
+.meta {
+    float: left;
+    clear: left;
+    color: #aaa;
+}
+
+.post {
+    float: left;
+    clear: left;
+    width: 80%;
+    padding-bottom: 20px;
+}
+
+.post pre {
+    border: 1px solid #336699;
+    background-color: #393939; 
+    padding: 0 .4em;
+    border-radius: 3px;
+}
+
+.post ul, .post ol {
+    margin-left: 1.35em;
+}
+
+.post code {
+    border: 1px solid #336699;
+    background-color: #393939; 
+    padding: 0 .2em;
+    border-radius: 3px;
+}
+
+.post pre code {
+    border: none;
+}
+
+.post pre.terminal {
+    border: 1px solid #252822;
+    background-color: #393939; 
+    color: #FFF; 
+    border-radius: 3px;
+}
+
+.post pre.terminal code {
+    background-color: #393939;
+}
 
 /* Consistant formatting for all links */
 a {
@@ -69,7 +134,7 @@ a:hover {
 .menu {
     list-style:none;
     float:right;
-    margin-top:29px;
+/*    margin-top:29px; */
 }
 
 .nav-item {

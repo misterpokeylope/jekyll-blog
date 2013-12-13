@@ -6,7 +6,7 @@ categories: posts
 ---
 
 In my first post, I gave a couple of vague reasons why I decided to use Jekyll
-to create this webiste, as opposed to something like Ruby on Rails. Having 
+to create this website, as opposed to something like Ruby on Rails. Having 
 recently used Rails for a school project, I can understand the appeal of using such
 a framework. It can be used to create powerful dynamic web apps with a range of
 useful tools and features. But for what I wanted out of this website, Rails would 
@@ -14,7 +14,7 @@ be like bringing a nuclear missile to a water gun fight. It's simply offers far
 more features than what I need. 
 
 Rails gives me the chance to build my own blog platform, while Jekyll _is_ a 
-blog platform, that allows me to focus on the blog itself, rather than writing 
+blog platform, which allows me to focus on the blog itself, rather than writing 
 and maintaining everything. While it would give me complete
 control over every aspect of my website, I am simply not interested in this
 level of control for such a small website. I feel comparing
@@ -24,14 +24,14 @@ tools that both happen to be able to accomplish the same task.
 Since I'm far more interested in showing what I like about Jekyll than I am in 
 comparing and contrasting Jekyll and Rails, I will keep the comparisons to a minimum. 
 
-Jekyll is as it's website describes, "a simple, blog-aware, static site
+Jekyll is as its website describes, "a simple, blog-aware, static site
 generator", nothing more, nothing less. Since it's just a ruby script, issuing 
 a simple `gem install jekyll` in a terminal is all it takes to have everything 
 installed, much like Rails. Again similar to Rails, one can then generate the
 scaffolding for a new blog by issuing `jekyll new blog`.
 
 This is where the two diverge however, with Jekyll taking a simpler path, as
-far as blogs are concerened. Navigating into a newly generated blog directory 
+far as blogs are concerned. Navigating into a newly generated blog directory 
 gives a simple directory structure.
 
 `blog/`
@@ -97,8 +97,8 @@ When `jekyll build` is run, the content of `index.html` will be combined with
 and the complete page(s), along with any CSS, will be placed in the `_sites/` directory. 
 By just using the YAML front matter at the top of a page,
 any page on the website can how have the navbar and footer, eliminating
-redundancy or inconsistancies between creating multi-page websites. I found
-this to be a very simple method to create consistancy, while still maintaining
+redundancy or inconsistencies between creating multi-page websites. I found
+this to be a very simple method to create consistency, while still maintaining
 a certain level of control for each page.
 
 Since a huge reason to use Jekyll is for the blog features, it helps that
