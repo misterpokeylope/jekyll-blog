@@ -43,6 +43,7 @@ body {
     float:left;
     width:500px;
     text-indent:25px;
+    text-align: justify;
     clear:left;
 }
 
@@ -53,6 +54,7 @@ body {
     margin-bottom: 2em;
     float: left;
     clear: left;
+    text-align: justify;
 }
 
 .posts li {
@@ -77,6 +79,7 @@ body {
     clear: left;
     width: 80%;
     padding-bottom: 20px;
+    text-align: justify;
 }
 
 .post pre {
@@ -129,6 +132,12 @@ a:hover {
     color:#699EBF;
     text-decoration:none;
 }
+
+/*
+p {
+    text-align: justify;
+}
+*/
 
 /* Nav bar */
 .menu {
