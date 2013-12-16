@@ -1,0 +1,20 @@
+---
+layout: post
+title: "New Name! Same Great Taste!"
+date: 2013-12-16
+categories: posts
+---
+
+Earlier today I finally bit the proverbial bullet and purchased a domain for
+this site. I now own the misterpokeylope.com domain, and will be using
+it instead of the old one. I will set up a redirect from the old one to the new
+one and such, but at this point it's deprecated.
+
+All of the dynamic DNS stuff is still provided by FreeDNS, and everything is
+still hosted on my RaspberryPi, so absolutely nothing has changed other than
+the URL. Before, I discovered that my website could not be indexed by Google or
+other search engines due to the polices of using a shared subdomain. So now, the
+hope is that people will actually be able to find this site, without me having
+to give a link out...
+
+$15 well spent I suppose.
