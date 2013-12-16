@@ -14,8 +14,9 @@ title: mister-pokeylope
       </div>
   {% endfor %}
 
-      <!-- Pagination links -->
   <div class="line-separator"></div>
+
+      <!-- Pagination links -->
   <div class="post">
     {% if paginator.previous_page %}
       {% if paginator.previous_page == 1" %}
@@ -24,15 +25,11 @@ title: mister-pokeylope
         <a href="page{{ paginator.previous_page }}" 
             class="previous">Previous</a>
       {% endif %}
-    {% else %}
-      <span class="previous">Previous</span>
     {% endif %}
     <span class="page_number ">Page: {{ paginator.page }} 
         of {{ paginator.total_pages }}</span>
     {% if paginator.next_page %}
       <a href="page{{ paginator.next_page }}" class="next">Next</a>
-    {% else %}
-      <span class="next ">Next</span>
     {% endif %}
   </div>
 </div>
