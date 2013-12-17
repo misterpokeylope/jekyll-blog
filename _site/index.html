@@ -7,9 +7,9 @@
     <meta charset="UTF-8"> 
   </head>
   <body>
-    <div class="wrapper">
-      <h3>mister-pokeylope</h3>
-      <nav>
+    <nav>
+      <div class="wrapper">
+        <h3>mister-pokeylope</h3>
         <ul class="menu">
           <li class="nav-item">
             
@@ -28,41 +28,45 @@
           </li>
           <li class="nav-item">
             
-              <a class="nav-link" href="/archive">Archives</a>
+              <a class="nav-link" href="/archive/">Archives</a>
             
           </li>
         </ul>
-      </nav> 
-    </div>
+      <div>
+    </nav> 
             
     <br>
-    <div class="wrapper">
-  <h1>Blog Posts</h1>
-  
-    <div class="line-separator"></div>
-    <h2>16 Dec 2013 &raquo; New Name! Same Great Taste!</h2>
-      <div class="post">
-        <p>Earlier today I finally bit the proverbial bullet and purchased a domain for
+    <section>
+  <div class="wrapper">
+    <h1>Blog Posts</h1>
+    
+      <div class="line-separator"></div>
+      <article>
+        <h2>16 Dec 2013 &raquo; New Name! Same Great Taste!</h2>
+        <div class="post">
+          <p>Earlier today I finally bit the proverbial bullet and purchased a domain for
 this site. I now own the misterpokeylope.com domain, and will be using
 it instead of the old one. I will set up a redirect from the old one to the new
 one and such, but at this point it&#39;s deprecated.</p>
 
 <p>All of the dynamic DNS stuff is still provided by FreeDNS, and everything is
-still hosted on my RaspberryPi, so absolutely nothing has changed other than
-the URL. Before, I discovered that my website could not be indexed by Google or
-other search engines due to the polices of using a shared subdomain. So now, the
-hope is that people will actually be able to find this site, without me having
-to give a link out...</p>
+still hosted on my Raspberry Pi, so absolutely nothing has changed other than
+the URL. Recently I discovered that my website could not be indexed by Google or
+other search engines due to the polices of using a free shared subdomain from FreeDNS. 
+So now, the hope is that people will actually be able to find this site 
+without me having to give a link out...</p>
 
 <p>$15 well spent I suppose.</p>
 
-        <a href="/posts/2013/12/16/new-name/">permalink</a>
-      </div>
-  
-    <div class="line-separator"></div>
-    <h2>12 Dec 2013 &raquo; Comments and Pagination</h2>
-      <div class="post">
-        <p>Now that I&#39;ve done further, most likely unnoticable, refinements to this site,
+          <a href="/posts/2013/12/16/new-name/">permalink</a>
+        </div>
+      </article>
+    
+      <div class="line-separator"></div>
+      <article>
+        <h2>12 Dec 2013 &raquo; Comments and Pagination</h2>
+        <div class="post">
+          <p>Now that I&#39;ve done further, most likely unnoticable, refinements to this site,
 I have been tossing the idea around of adding a comments section to each of the
 permalinked posts. There seem to be a fair number of static comment plugins
 already available, so it sounds like it would be brain dead easy to add something
@@ -106,13 +110,15 @@ to fight with it at all), and just settled on my slight modification instead.
 Sure, I could have had links to multiple pages instead of just having &quot;next&quot;
 and &quot;previous&quot;, but who cares? That&#39;s what the <a href="/archive">archives</a> are for!</p>
 
-        <a href="/posts/2013/12/12/comments-and-pages/">permalink</a>
-      </div>
-  
-    <div class="line-separator"></div>
-    <h2>06 Dec 2013 &raquo; Why Jekyll?</h2>
-      <div class="post">
-        <p>In my first post, I gave a couple of vague reasons why I decided to use Jekyll
+          <a href="/posts/2013/12/12/comments-and-pages/">permalink</a>
+        </div>
+      </article>
+    
+      <div class="line-separator"></div>
+      <article>
+        <h2>06 Dec 2013 &raquo; Why Jekyll?</h2>
+        <div class="post">
+          <p>In my first post, I gave a couple of vague reasons why I decided to use Jekyll
 to create this website, as opposed to something like Ruby on Rails. Having 
 recently used Rails for a school project, I can understand the appeal of using such
 a framework. It can be used to create powerful dynamic web apps with a range of
@@ -237,13 +243,15 @@ highlighting, and countless plugins, but I&#39;m not about to go on and on about
 for that long. Jekyll has so far been very pleasant to work with, and I can&#39;t
 imagine switching to anything else any time soon.</p>
 
-        <a href="/posts/2013/12/06/why-jekyll/">permalink</a>
-      </div>
-  
-    <div class="line-separator"></div>
-    <h2>21 Nov 2013 &raquo; Simple OfflineIMAP Notifications with libnotify</h2>
-      <div class="post">
-        <p>Mutt in combination with OfflineIMAP and Msmtp is easily the least sucky mail setup
+          <a href="/posts/2013/12/06/why-jekyll/">permalink</a>
+        </div>
+      </article>
+    
+      <div class="line-separator"></div>
+      <article>
+        <h2>21 Nov 2013 &raquo; Simple OfflineIMAP Notifications with libnotify</h2>
+        <div class="post">
+          <p>Mutt in combination with OfflineIMAP and Msmtp is easily the least sucky mail setup
 I&#39;ve used, but because of it&#39;s simplicity, it&#39;s missing one thing that I 
 like to have: visual notifications for new mail. In my <a href="https://bbs.archlinux.org/viewtopic.php?id=149444">bspwm</a> 
 and <a href="http://dwm.suckless.org/">dwm</a> setups, I like to keep mutt running in a terminal window, 
@@ -319,13 +327,15 @@ file names that are problematic, so ideally I should not see these issues.
 Any suggestions are more than welcome as I am still fairly new to bash
 scripting myself.
 </code></pre></div>
-        <a href="/posts/2013/11/21/offlineimap-notifications/">permalink</a>
-      </div>
-  
-    <div class="line-separator"></div>
-    <h2>20 Nov 2013 &raquo; Unexpected Downtime</h2>
-      <div class="post">
-        <p>Over the past few days, as probably nobody noticed, the website was
+          <a href="/posts/2013/11/21/offlineimap-notifications/">permalink</a>
+        </div>
+      </article>
+    
+      <div class="line-separator"></div>
+      <article>
+        <h2>20 Nov 2013 &raquo; Unexpected Downtime</h2>
+        <div class="post">
+          <p>Over the past few days, as probably nobody noticed, the website was
 inaccessible. I&#39;m thinking it started partly due to me accidentally changing some
 of my port forwarding settings, along with WOW!&#39;s general suckiness, and some
 other issue with my Raspberry Pi. </p>
@@ -334,21 +344,24 @@ other issue with my Raspberry Pi. </p>
 to rebooting the Raspberry Pi, and everything seems to be working again. Such a
 Windows-style solution!</p>
 
-        <a href="/posts/2013/11/20/unexpected-downtime/">permalink</a>
-      </div>
-  
+          <a href="/posts/2013/11/20/unexpected-downtime/">permalink</a>
+        </div>
+      </article>
+    
+
+    <div class="line-separator"></div>
 
       <!-- Pagination links -->
-  <div class="line-separator"></div>
-  <div class="post">
-    
-    <span class="page_number ">Page: 1 
-        of 2</span>
-    
-      <a href="page2" class="next">Next</a>
-    
+    <div class="post">
+      
+      <span class="page_number ">Page: 1 
+          of 2</span>
+      
+        <a href="page2" class="next">Next</a>
+      
+    </div>
   </div>
-</div>
+</section>
   
     <br>
 

@@ -1,7 +1,7 @@
 body {
-    background-color:#080808;
-    color:#33b5e5;
-    font-family:Helvetica,"DejaVu Sans",Arial,Sans-Serif;
+    background-color: #080808;
+    color: #629FB5; 
+    font-family: Helvetica,"DejaVu Sans",Arial,Sans-Serif;
 }
 
 /* Body Formatting */
@@ -121,9 +121,16 @@ a {
     text-decoration:none;
 }
 
-/* want h1 to always float */
-h1,h2,h3 {
+/* want h to always float */
+h1 {
     color: #007AA3;
+    float: left;
+    clear: left;
+    font-size: 2em;
+}
+
+h2,h3 {
+    color: #ABABAB;
     float: left;
     clear: left;
 }
