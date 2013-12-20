@@ -2,7 +2,7 @@
 layout: post
 title: "Why Jekyll?"
 date: 2013-12-6
-categories: posts
+categories: posts site
 ---
 
 In my first post, I gave a couple of vague reasons why I decided to use Jekyll

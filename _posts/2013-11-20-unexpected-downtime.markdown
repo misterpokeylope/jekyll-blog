@@ -2,7 +2,7 @@
 layout: post
 title: "Unexpected Downtime"
 date: 2013-11-20
-categories: posts
+categories: posts site
 ---
 
 Over the past few days, as probably nobody noticed, the website was

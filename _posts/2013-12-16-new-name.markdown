@@ -2,15 +2,15 @@
 layout: post
 title: "New Name! Same Great Taste!"
 date: 2013-12-16
-categories: posts
+categories: posts site 
 ---
 
 Earlier today I finally bit the proverbial bullet and purchased a domain for
 this site. I now own the misterpokeylope.com domain, and will be using
-it instead of the old one. I will set up a redirect from the old one to the new
-one and such, but at this point it's deprecated.
+it instead of the old mrpokeylope.mooo.com. I set up a redirect from the old 
+URL to the new one and such, but at this point it's deprecated.
 
-All of the dynamic DNS stuff is still provided by FreeDNS, and everything is
+All of the dynamic DNS services are still provided by FreeDNS, and everything is
 still hosted on my Raspberry Pi, so absolutely nothing has changed other than
 the URL. Recently I discovered that my website could not be indexed by Google or
 other search engines due to the polices of using a free shared subdomain from FreeDNS. 

@@ -2,7 +2,7 @@
 layout: post
 title:  "Archive Test"
 date:   2013-11-13
-categories: posts 
+categories: posts site 
 ---
 
 There isn't much point to this post really, other than to test the archiving

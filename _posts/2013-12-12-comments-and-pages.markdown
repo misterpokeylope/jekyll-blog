@@ -2,7 +2,7 @@
 layout: post
 title: Comments and Pagination
 date: 2013-12-12
-categories: posts
+categories: posts site 
 ---
 
 Now that I've done further, most likely unnoticable, refinements to this site,

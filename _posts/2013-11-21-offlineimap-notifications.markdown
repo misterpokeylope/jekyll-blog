@@ -2,7 +2,7 @@
 layout: post
 title: "Simple OfflineIMAP Notifications with libnotify"
 date: 2013-11-21
-categories: posts
+categories: posts linux
 ---
  
 Mutt in combination with OfflineIMAP and Msmtp is easily the least sucky mail setup

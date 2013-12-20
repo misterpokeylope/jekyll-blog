@@ -2,7 +2,7 @@
 layout: post
 title:  "Migration to Jekyll Completed!"
 date:   2013-11-12
-categories: posts 
+categories: posts site 
 ---
 
 As promised I've migrated about 90% of the site over to using Jekyll, to allow
