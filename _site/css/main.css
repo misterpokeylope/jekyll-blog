@@ -47,6 +47,12 @@ body {
     clear:left;
 }
 
+.error, .error h1 {
+    float: none;
+    clear: left;
+    text-align: center !important;
+}
+
 /* Jekyll formatting */
 
 .posts {

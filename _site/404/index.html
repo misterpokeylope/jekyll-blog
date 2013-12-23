@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{{ page.title }}</title>
+    <title>404 Not Found</title>
     <link rel="stylesheet" type="text/css" href="/css/main.css">
     <link rel="stylesheet" type="text/css" href="/css/syntax.css">
     <meta charset="UTF-8"> 
@@ -12,39 +12,37 @@
         <h3>mister-pokeylope</h3>
         <ul class="menu">
           <li class="nav-item">
-            {% if page.title == "mister-pokeylope" %}
-              <a class="nav-link-current" href="/">Home</a>
-            {% else %}
+            
               <a class="nav-link" href="/">Home</a> 
-            {% endif %}
+            
           </li>
           <li class="nav-item">
-            {% if page.title == "About" %}
-              <a class="nav-link-current" href="/about/">About</a></li>
-            {% else %}
+            
               <a class="nav-link" href="/about/">About</a>
-            {% endif %}
+            
           </li>
           <li class="nav-item">
-            {% if page.title == "Contact" %}
-              <a class="nav-link-current" href="/contact/">Contact</a>
-            {% else %}
+            
               <a class="nav-link" href="/contact/">Contact</a>
-            {% endif %}
+            
           </li>
           <li class="nav-item">
-            {% if page.title == "Archives" %}
-              <a class="nav-link-current" href="/archive/">Archives</a>
-            {% else %}
+            
               <a class="nav-link" href="/archive/">Archives</a>
-            {% endif %}
+            
           </li>
         </ul>
       </div>
     </nav> 
             
     <br>
-    {{ content }}  
+    <section>
+  <div class="wrapper">
+    <h1 class="error">404 Not Found</h1>
+    <p class="error">This URL does not seem to exist</p>
+  </div>
+</section>
+  
     <br>
 
     <footer>
