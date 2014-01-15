@@ -1,4 +1,5 @@
-name: mister-pokeylope 
+name: mister-pokeylope
+url: http://www.misterpokeylope.com
 markdown: redcarpet
 permalink: pretty
 pygments: true
