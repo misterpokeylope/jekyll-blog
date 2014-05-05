@@ -42,6 +42,33 @@
     
       <div class="line-separator"></div>
       <article>
+        <h2>04 May 2014 &raquo; IT LIVES!</h2>
+        <div class="post">
+          <p>About four months ago we got fed up with how hit or miss the quality of the
+wireless our WOW! provided router was, and replaced the wireless functions of
+the offending Router/Modem abomination with a real wireless router. Somehow the
+port forwarding and DHCP reservations for my Pi were disrupted, and
+my website went down. Due to the business of this recent semester
+at school I didn&#39;t have much time/energy (except I kinda did sometimes) to deal
+with getting it back up and running. Now that I had a bit of free time between
+Spring and Summer semester (almost an entire week!), I didn&#39;t have much of an
+excuse to not deal with it.</p>
+
+<p>Fortunately my four month out of date Arch Linux ARM install surved the most
+massive system update it will hopefully ever have to deal with, and other
+than not having enough space the first try due to an unemptied Pacman cache,
+it&#39;s up and running, happy as can be.</p>
+
+<p>Despite broken promises of real content and what not, I will still try to put
+some stuff out every now and then, even though my next two semesters at school
+are looking to be just as busy as my most recent ones.</p>
+
+          <a href="/posts/site/2014/05/04/it-lives/">permalink</a>
+        </div>
+      </article>
+    
+      <div class="line-separator"></div>
+      <article>
         <h2>02 Jan 2014 &raquo; New Year, Hopefully New Content</h2>
         <div class="post">
           <p>Hopefully in the coming year I am able/willing to make more posts with
@@ -270,90 +297,6 @@ for that long. Jekyll has so far been very pleasant to work with, and I can&#39;
 imagine switching to anything else any time soon.</p>
 
           <a href="/posts/site/2013/12/06/why-jekyll/">permalink</a>
-        </div>
-      </article>
-    
-      <div class="line-separator"></div>
-      <article>
-        <h2>21 Nov 2013 &raquo; Simple OfflineIMAP Notifications with libnotify</h2>
-        <div class="post">
-          <p>Mutt in combination with OfflineIMAP and Msmtp is easily the least sucky mail setup
-I&#39;ve used, but because of it&#39;s simplicity, it&#39;s missing one thing that I 
-like to have: visual notifications for new mail. In my <a href="https://bbs.archlinux.org/viewtopic.php?id=149444">bspwm</a> 
-and <a href="http://dwm.suckless.org/">dwm</a> setups, I like to keep mutt running in a terminal window, 
-in a dedicated workspace or tag respectively. Short of obsessively switching 
-back and forth to the mutt terminal, I don&#39;t have a clean and efficient 
-way to know immediately when I revieve a new email.</p>
-
-<p>I found some scripts that can accomplish this on the Arch Linux forums, but
-they were more complex than what I wanted. Instead I wrote a short bash script 
-to run OfflineIMAP and display the number of new emails, if any. With some googling and 
-some help from the fine people over on the Arch Linux forums, I got this working 
-with few issues.</p>
-
-<p>The entire process was fairly straightforward, so here&#39;s a little how-to: </p>
-
-<p>Make sure to have your OS&#39; version of <code>libnotify</code> installed 
-before you begin, and a notification daemon for <code>notify-send</code> 
-to communicate with. I personally use <a href="https://www.archlinux.org/packages/community/x86_64/dunst/">dunst</a> because it&#39;s 
-lightweight and simple to setup, but there are <a href="https://wiki.archlinux.org/index.php/Libnotify#Builtin_servers">many other choices</a> 
-that also work.</p>
-
-<p>We can put the following in a file called <code>offlineimap-notify.sh</code>: </p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="c">#!/usr/bin/bash</span>
-
-<span class="c">#run OfflineIMAP once, with quiet interface</span>
-offlineimap -o -q -u quiet
-
-<span class="c">#count new mail for every maildir</span>
-<span class="nv">maildirnew</span><span class="o">=</span><span class="s2">&quot;$HOME/Mail/*/*/new/&quot;</span>
-<span class="nv">new</span><span class="o">=</span><span class="s2">&quot;$(find $maildirnew -type f | wc -l)&quot;</span>
-
-<span class="c">#count old mail for every maildir</span>
-<span class="nv">maildirold</span><span class="o">=</span><span class="s2">&quot;$HOME/Mail/*/*/cur/&quot;</span>
-<span class="nv">old</span><span class="o">=</span><span class="s2">&quot;$(find $maildirold -type f | wc -l)&quot;</span>
-
-<span class="k">if</span> <span class="o">[</span> <span class="nv">$new</span> -gt 0 <span class="o">]</span> 
-<span class="k">then</span>
-<span class="k">    </span><span class="nb">export </span><span class="nv">DISPLAY</span><span class="o">=</span>:0<span class="p">;</span> <span class="nb">export </span><span class="nv">XAUTHORITY</span><span class="o">=</span>~/.Xauthority<span class="p">;</span> 
-    notify-send -a <span class="s2">&quot;OfflineIMAP&quot;</span> <span class="s2">&quot;New mail!\nNew: $new Old: $old&quot;</span>
-<span class="k">fi</span>
-</code></pre></div>
-<p>Make sure the script is executable, and put it in your <code>$PATH</code> if you wish.</p>
-
-<p>It will count all of the files in the <code>~/Mail</code> directory and send a notification 
-if there new ones. You may need to modify the counting section to your needs, depending
-on the location of your Maildirs.</p>
-
-<p>The <code>export DISPLAY=:0; export XAUTHORITY=~/.Xauthority;</code> part is neccessary, 
-in my case, when running the script from a cron job, since cron will normally 
-not have access to the environmental display variables. I also tried to use
-this script with a systemd timer unit, in a systemd User instance, but I 
-was unable to get it to display the notifcations, even though it was syncing
-my mail properly. If I can find a solution to this I will create a follow-up
-post with my findings.</p>
-
-<p>We can run the script every 3 minutes with cron:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">*/3 * * * * ~/Scripts/offlineimap-notify.sh
-</code></pre></div>
-<p>Now you should have a lovely little notification every time you get a new 
-email! Simple as that.</p>
-
-<p><a href="/mutt.png">Click for example!</a> (1024x600 728K)</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">Notes: 
-
-If your OS keeps bash in /bin, then please change the shebang line 
-to reflect that. Arch Linux keeps all binaries in /usr/bin but most other 
-OS&#39; don&#39;t.
-
-Regarding my use of `find`: 
-I am aware that in general parsing the output of `find` and `ls` can be problematic 
-in certain circumstances. However, OfflineIMAP should not produce 
-file names that are problematic, so ideally I should not see these issues. 
-Any suggestions are more than welcome as I am still fairly new to bash
-scripting myself.
-</code></pre></div>
-          <a href="/posts/linux/2013/11/21/offlineimap-notifications/">permalink</a>
         </div>
       </article>
     
