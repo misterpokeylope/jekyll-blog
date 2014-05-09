@@ -42,6 +42,139 @@
     
       <div class="line-separator"></div>
       <article>
+        <h2>06 Dec 2013 &raquo; Why Jekyll?</h2>
+        <div class="post">
+          <p>In my first post, I gave a couple of vague reasons why I decided to use Jekyll
+to create this website, as opposed to something like Ruby on Rails. Having 
+recently used Rails for a school project, I can understand the appeal of using such
+a framework. It can be used to create powerful dynamic web apps with a range of
+useful tools and features. But for what I wanted out of this website, Rails would 
+be like bringing a nuclear missile to a water gun fight. It&#39;s simply offers far
+more features than what I need. </p>
+
+<p>Rails gives me the chance to build my own blog platform, while Jekyll <em>is</em> a 
+blog platform, which allows me to focus on the blog itself, rather than writing 
+and maintaining everything. While it would give me complete
+control over every aspect of my website, I am simply not interested in this
+level of control for such a small website. I feel comparing
+Jekyll and Rails is not fair because they are just two  different
+tools that both happen to be able to accomplish the same task. </p>
+
+<p>Since I&#39;m far more interested in showing what I like about Jekyll than I am in 
+comparing and contrasting Jekyll and Rails, I will keep the comparisons to a minimum. </p>
+
+<p>Jekyll is as its website describes, &quot;a simple, blog-aware, static site
+generator&quot;, nothing more, nothing less. Since it&#39;s just a ruby script, issuing 
+a simple <code>gem install jekyll</code> in a terminal is all it takes to have everything 
+installed, much like Rails. Again similar to Rails, one can then generate the
+scaffolding for a new blog by issuing <code>jekyll new blog</code>.</p>
+
+<p>This is where the two diverge however, with Jekyll taking a simpler path, as
+far as blogs are concerned. Navigating into a newly generated blog directory 
+gives a simple directory structure.</p>
+
+<p><code>blog/</code></p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">_layouts/
+_posts/
+_site/
+css/
+_config.yml
+index.html
+</code></pre></div>
+<p>Even at first glance this structure is fairly simple to follow. Jekyll divides
+sites into three main components, layouts, posts, and CSS. Since each of these
+parts are constructed very differently from one another, it was a very sane
+choice to give each their own directory. </p>
+
+<p>This layout is very easy to extend as well. For example, if JavaScript is needed then all
+that needs to be done is adding a <code>js/</code> directory to the root of the blog
+directory, and it will be included in the final <code>_site/</code> folder after
+generation.</p>
+
+<p>Jekyll layouts use mainly HTML/CSS, spattered with <a href="https://github.com/Shopify/liquid/wiki/Liquid-for-Designers">Liquid Markup</a>
+that gets interpreted to HTML at build-time. Again, if this sounds somewhat similar to
+how Rails works, that&#39;s because it is.</p>
+
+<p>A good example of how this works is the following:</p>
+
+<p><code>_layouts/default.html</code></p>
+<div class="highlight"><pre><code class="html language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>{{ page.title }}<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;nav&gt;</span>
+      ...
+    <span class="nt">&lt;/nav&gt;</span>
+    {{ content }}
+    <span class="nt">&lt;footer&gt;</span>
+      ...
+    <span class="nt">&lt;/footer&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div>
+<p>Then in <code>index.html</code> all that is needed is:</p>
+<div class="highlight"><pre><code class="html language-html" data-lang="html">---
+layout: default
+title: Home
+---
+
+<span class="nt">&lt;p&gt;</span>Look at this snazzy navbar and footer!<span class="nt">&lt;/p&gt;</span>
+</code></pre></div>
+<p>When <code>jekyll build</code> is run, the content of <code>index.html</code> will be combined with
+<code>_layouts/default.html</code>, with the index content being placed in the <code>content</code> tag,
+and the complete page(s), along with any CSS, will be placed in the <code>_sites/</code> directory. 
+By just using the YAML front matter at the top of a page,
+any page on the website can how have the navbar and footer, eliminating
+redundancy or inconsistencies between creating multi-page websites. I found
+this to be a very simple method to create consistency, while still maintaining
+a certain level of control for each page.</p>
+
+<p>Since a huge reason to use Jekyll is for the blog features, it helps that
+creating blog posts is simple as well. Each blog post is written in markdown
+and needs to be placed in the <code>_posts/</code> directory, with each following a naming
+convention like <code>2013-12-6-why-jekyll.markdown</code>. Each post needs some YAML
+front matter for Jekyll to construct everything properly, but the rest can be
+written in pure markdown.</p>
+
+<p><code>_posts/2013-12-6-why-jekyll.markdown</code></p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">---
+layout: default
+title: &quot;Why Jekyll?&quot;
+date: 2013-12-6
+categories: posts
+---
+
+I dunno, _you_ tell me!
+</code></pre></div>
+<p>Jekyll makes it very simple to extend layouts for specific purposes, such as
+dedicated pages for a post, using YAML front matter:</p>
+
+<p><code>_layouts/post.html</code></p>
+<div class="highlight"><pre><code class="html language-html" data-lang="html">---
+layout: default
+---
+
+<span class="nt">&lt;h2&gt;</span>{{ page.title }}<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;meta&quot;</span><span class="nt">&gt;</span>{{ page.date | date_to_string }}<span class="nt">&lt;/p&gt;</span>
+
+{{ content }}
+</code></pre></div>
+<p>Now each dedicated post page can display the title and post date in a
+header just by specifying the post layout in the YAML front matter.</p>
+
+<p>Of course, Jekyll has even more to offer, like built in pagination, syntax
+highlighting, and countless plugins, but I&#39;m not about to go on and on about it
+for that long. Jekyll has so far been very pleasant to work with, and I can&#39;t
+imagine switching to anything else any time soon.</p>
+
+          <a href="/posts/site/2013/12/06/why-jekyll/">permalink</a>
+        </div>
+      </article>
+    
+      <div class="line-separator"></div>
+      <article>
         <h2>21 Nov 2013 &raquo; Simple OfflineIMAP Notifications with libnotify</h2>
         <div class="post">
           <p>Mutt in combination with OfflineIMAP and Msmtp is easily the least sucky mail setup

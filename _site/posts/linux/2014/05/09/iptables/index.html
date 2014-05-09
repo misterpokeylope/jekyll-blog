@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Configuring iptables</title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/syntax.css">
+    <meta charset="UTF-8"> 
+  </head>
+  <body>
+    <nav>
+      <div class="wrapper">
+        <h3>mister-pokeylope</h3>
+        <ul class="menu">
+          <li class="nav-item">
+            
+              <a class="nav-link" href="/">Home</a> 
+            
+          </li>
+          <li class="nav-item">
+            
+              <a class="nav-link" href="/about/">About</a>
+            
+          </li>
+          <li class="nav-item">
+            
+              <a class="nav-link" href="/contact/">Contact</a>
+            
+          </li>
+          <li class="nav-item">
+            
+              <a class="nav-link" href="/archive/">Archives</a>
+            
+          </li>
+        </ul>
+      </div>
+    </nav> 
+            
+    <br>
+    <section>
+  <div class="wrapper">
+    <header>
+      <h1>Configuring iptables</h1>
+      <div class="line-separator"></div>
+      <h3 class="meta">09 May 2014</h3>
+    </header>
+
+    <div class="post">
+      <p>With the recent fixing of my &quot;network issues&quot;, I have been putting more time
+and effort in to making sure everything, from the website to the Raspberry Pi,
+is cleaned out after it&#39;s Winter hibernation. Upon reading some of journald&#39;s
+log files (which I&#39;d noticed grew somewhat quickly), I discovered a flood of
+failed remote login attempts, clustered at different times of the day, and all
+attempting to login from high numbered ports, with users that don&#39;t exist on the
+system. A quick <code>whois</code> lookup on the IPs revealed that they&#39;re locations from 
+all over the world, so most likely bots looking for easy access to insecure 
+systems.</p>
+
+<p>Before the downtime I had not bothered to setup any sort of protection on the
+Pi since I figured that my domain was still relatively new and unknown. While
+it&#39;s still pretty unkown, I have it posted in public places now, and have it
+indexed by Google, so this most likely allows intrepid spam-bots to find my
+domain relatively easily. While programs like <a href="http://www.fail2ban.org/wiki/index.php/Main_Page">fail2ban</a> or disabling
+ssh all together could have remedied the problem, I went for a much less
+passive approach, and decided to set up a firewall.</p>
+
+<p>Linux has plenty of software firewall solutions, but naturally I decided to go 
+with <a href="http://en.wikipedia.org/wiki/Iptables">iptables</a>, the Linux kernel&#39;s built-in firewall. I&#39;m fully
+aware of <a href="https://wiki.archlinux.org/index.php/Nftables">nftables</a>, the sucessor to iptables, but since Arch Linux
+ARM currently has the 3.10 Kernel as it&#39;s &quot;stable&quot; Kernel version this option 
+is not available to me yet. I plan on using it however, once it fully 
+replaces iptables in the kernel.</p>
+
+<p>While it&#39;s a powerful tool, iptables is not the easiest to setup for those
+inexperienced with firewalls, like me. Fortunately the fantastic Arch Wiki has
+<a href="https://wiki.archlinux.org/index.php/Simple_stateful_firewall">an entire article for setting up a stateful firewall</a> with iptables. </p>
+
+<p>Admittedly it didn&#39;t go as smoothly as I thought it would, entirely due to
+PEBKAC issues, and setting it up over an ssh connection. As one could
+imagine setting the <code>INPUT DROP</code> policy before configuring the SSH
+related chain will quickly lead to an unproductive session, especially when one
+doesn&#39;t have immediate physical access to the Raspberry Pi.</p>
+
+<p>Luckily for me the article in question has a helpful explination of what each
+command did at each step, so at least I wouldn&#39;t feel too bad about the fact 
+I mainly copy and pasted the commands that I felt I needed. While I still don&#39;t
+know a significant amount about iptables yet, I feel I now at least have a 
+basic understanding, that suits a machine that only servers out a simple 
+webserver.</p>
+
+<p>For those interested, I threw together a quick bash script that more or less 
+matches the rules and chains I have in place. This must be run as root, so 
+<em>use with caution</em>.</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="c">#!/usr/bin/bash</span>
+
+<span class="c"># User defined chains</span>
+<span class="nb">echo</span> <span class="s2">&quot;Setting user defined Chains&quot;</span>
+iptables -N TCP
+iptables -N UDP
+<span class="nb">echo</span> <span class="s2">&quot;Done&quot;</span>
+
+<span class="c"># Set default policies</span>
+<span class="nb">echo</span> <span class="s2">&quot;Setting Policies&quot;</span>
+iptables -P FORWARD DROP
+iptables -P OUTPUT ACCEPT
+<span class="nb">echo</span> <span class="s2">&quot;Done&quot;</span>
+
+<span class="c"># Set rules</span>
+<span class="nb">echo</span> <span class="s2">&quot;Setting rules&quot;</span>
+iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+iptables -A INPUT -i lo -j ACCEPT
+iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
+iptables -A INPUT -p icmp --icmp-type 8 -m conntrack --ctstate NEW -j ACCEPT
+<span class="nb">echo</span> <span class="s2">&quot;Done&quot;</span>
+
+<span class="c"># Attach TCP/UDP chains to INPUT</span>
+<span class="nb">echo</span> <span class="s2">&quot;Attaching TCP/UDP chains to INPUT&quot;</span>
+iptables -A INPUT -p udp -m conntrack --ctstate NEW -j UDP
+iptables -A INPUT -p tcp --syn -m conntrack --ctstate NEW -j TCP
+<span class="nb">echo</span> <span class="s2">&quot;Done&quot;</span>
+
+<span class="c"># Open ports for services</span>
+<span class="nb">echo</span> <span class="s2">&quot;Opening ports for HTTP, HTTPS, DNS, and SSH&quot;</span>
+iptables -A TCP -p tcp --dport 80 -j ACCEPT
+iptables -A TCP -p tcp --dport 443 -j ACCEPT
+iptables -A UDP -p udp --dport 53 -j ACCEPT
+iptables -A TCP -p tcp --dport 22 -j ACCEPT
+<span class="nb">echo</span> <span class="s2">&quot;Done&quot;</span>
+
+<span class="c"># Reject everything else</span>
+iptables -P INPUT DROP
+
+<span class="c"># Save Settings</span>
+<span class="nb">echo</span> <span class="s2">&quot;Saving settings to /etc/iptables/iptables.rules&quot;</span>
+iptables-save /etc/iptables/iptables.rules
+<span class="nb">echo</span> <span class="s2">&quot;Done&quot;</span>
+</code></pre></div>
+<p>Of course, there is more I can do, such as disabling logins for SSH, and only
+allowing access via SSH keys. That being said, there&#39;s nothing particularly
+interesting/useful/valuable on my Raspberry Pi in the first place.</p>
+
+    </div>
+  </div>
+</section>
+  
+    <br>
+
+    <footer>
+      <div class="wrapper">
+        <a href="http://www.w3.org/html/logo/" class="logo" 
+            target="_blank">
+          <img src="/html5-badge.png" width="165" height="64" 
+          alt="HTML5 Powered with CSS3 / Styling, and Semantics" 
+          title="HTML5 Powered with CSS3 / Styling, and Semantics">
+        </a>
+        <p class="foot">
+          My intent is to keep this website HTML5 and CSS3
+          compliant. All code has been validated with the <a  
+          href="http://validator.w3.org/check?uri=http%3A%2F%2Fwww.misterpokeylope.com%2F" 
+          target="_blank"> W3C Markup Validation Service</a> and the <a 
+          href="http://jigsaw.w3.org/css-validator/validator?uri=www.misterpokeylope.com"
+          target="_blank">W3 CSS Validation Service</a>. 
+          CSS(3) vendor prefixes are used where available, with
+          priortity given to Firefox and WebKit compatibility.
+          Full and constant compatibility across all browers is not guaranteed. 
+          <br>
+          DNS services provided by <a href="http://freedns.afraid.org/" 
+              target="_blank">FreeDNS</a>. Powered by <a href="http://nginx.org/" 
+              target="_blank">nginx</a>. Built using <a
+              href="http://jekyllrb.com/" target="_blank">Jekyll</a>.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

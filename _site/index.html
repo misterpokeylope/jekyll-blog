@@ -42,25 +42,126 @@
     
       <div class="line-separator"></div>
       <article>
+        <h2>09 May 2014 &raquo; Configuring iptables</h2>
+        <div class="post">
+          <p>With the recent fixing of my &quot;network issues&quot;, I have been putting more time
+and effort in to making sure everything, from the website to the Raspberry Pi,
+is cleaned out after it&#39;s Winter hibernation. Upon reading some of journald&#39;s
+log files (which I&#39;d noticed grew somewhat quickly), I discovered a flood of
+failed remote login attempts, clustered at different times of the day, and all
+attempting to login from high numbered ports, with users that don&#39;t exist on the
+system. A quick <code>whois</code> lookup on the IPs revealed that they&#39;re locations from 
+all over the world, so most likely bots looking for easy access to insecure 
+systems.</p>
+
+<p>Before the downtime I had not bothered to setup any sort of protection on the
+Pi since I figured that my domain was still relatively new and unknown. While
+it&#39;s still pretty unkown, I have it posted in public places now, and have it
+indexed by Google, so this most likely allows intrepid spam-bots to find my
+domain relatively easily. While programs like <a href="http://www.fail2ban.org/wiki/index.php/Main_Page">fail2ban</a> or disabling
+ssh all together could have remedied the problem, I went for a much less
+passive approach, and decided to set up a firewall.</p>
+
+<p>Linux has plenty of software firewall solutions, but naturally I decided to go 
+with <a href="http://en.wikipedia.org/wiki/Iptables">iptables</a>, the Linux kernel&#39;s built-in firewall. I&#39;m fully
+aware of <a href="https://wiki.archlinux.org/index.php/Nftables">nftables</a>, the sucessor to iptables, but since Arch Linux
+ARM currently has the 3.10 Kernel as it&#39;s &quot;stable&quot; Kernel version this option 
+is not available to me yet. I plan on using it however, once it fully 
+replaces iptables in the kernel.</p>
+
+<p>While it&#39;s a powerful tool, iptables is not the easiest to setup for those
+inexperienced with firewalls, like me. Fortunately the fantastic Arch Wiki has
+<a href="https://wiki.archlinux.org/index.php/Simple_stateful_firewall">an entire article for setting up a stateful firewall</a> with iptables. </p>
+
+<p>Admittedly it didn&#39;t go as smoothly as I thought it would, entirely due to
+PEBKAC issues, and setting it up over an ssh connection. As one could
+imagine setting the <code>INPUT DROP</code> policy before configuring the SSH
+related chain will quickly lead to an unproductive session, especially when one
+doesn&#39;t have immediate physical access to the Raspberry Pi.</p>
+
+<p>Luckily for me the article in question has a helpful explination of what each
+command did at each step, so at least I wouldn&#39;t feel too bad about the fact 
+I mainly copy and pasted the commands that I felt I needed. While I still don&#39;t
+know a significant amount about iptables yet, I feel I now at least have a 
+basic understanding, that suits a machine that only servers out a simple 
+webserver.</p>
+
+<p>For those interested, I threw together a quick bash script that more or less 
+matches the rules and chains I have in place. This must be run as root, so 
+<em>use with caution</em>.</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="c">#!/usr/bin/bash</span>
+
+<span class="c"># User defined chains</span>
+<span class="nb">echo</span> <span class="s2">&quot;Setting user defined Chains&quot;</span>
+iptables -N TCP
+iptables -N UDP
+<span class="nb">echo</span> <span class="s2">&quot;Done&quot;</span>
+
+<span class="c"># Set default policies</span>
+<span class="nb">echo</span> <span class="s2">&quot;Setting Policies&quot;</span>
+iptables -P FORWARD DROP
+iptables -P OUTPUT ACCEPT
+<span class="nb">echo</span> <span class="s2">&quot;Done&quot;</span>
+
+<span class="c"># Set rules</span>
+<span class="nb">echo</span> <span class="s2">&quot;Setting rules&quot;</span>
+iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+iptables -A INPUT -i lo -j ACCEPT
+iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
+iptables -A INPUT -p icmp --icmp-type 8 -m conntrack --ctstate NEW -j ACCEPT
+<span class="nb">echo</span> <span class="s2">&quot;Done&quot;</span>
+
+<span class="c"># Attach TCP/UDP chains to INPUT</span>
+<span class="nb">echo</span> <span class="s2">&quot;Attaching TCP/UDP chains to INPUT&quot;</span>
+iptables -A INPUT -p udp -m conntrack --ctstate NEW -j UDP
+iptables -A INPUT -p tcp --syn -m conntrack --ctstate NEW -j TCP
+<span class="nb">echo</span> <span class="s2">&quot;Done&quot;</span>
+
+<span class="c"># Open ports for services</span>
+<span class="nb">echo</span> <span class="s2">&quot;Opening ports for HTTP, HTTPS, DNS, and SSH&quot;</span>
+iptables -A TCP -p tcp --dport 80 -j ACCEPT
+iptables -A TCP -p tcp --dport 443 -j ACCEPT
+iptables -A UDP -p udp --dport 53 -j ACCEPT
+iptables -A TCP -p tcp --dport 22 -j ACCEPT
+<span class="nb">echo</span> <span class="s2">&quot;Done&quot;</span>
+
+<span class="c"># Reject everything else</span>
+iptables -P INPUT DROP
+
+<span class="c"># Save Settings</span>
+<span class="nb">echo</span> <span class="s2">&quot;Saving settings to /etc/iptables/iptables.rules&quot;</span>
+iptables-save /etc/iptables/iptables.rules
+<span class="nb">echo</span> <span class="s2">&quot;Done&quot;</span>
+</code></pre></div>
+<p>Of course, there is more I can do, such as disabling logins for SSH, and only
+allowing access via SSH keys. That being said, there&#39;s nothing particularly
+interesting/useful/valuable on my Raspberry Pi in the first place.</p>
+
+          <a href="/posts/linux/2014/05/09/iptables/">permalink</a>
+        </div>
+      </article>
+    
+      <div class="line-separator"></div>
+      <article>
         <h2>04 May 2014 &raquo; IT LIVES!</h2>
         <div class="post">
-          <p>About four months ago we got fed up with how hit or miss the quality of the
-wireless our WOW! provided router was, and replaced the wireless functions of
+          <p>About four months ago we got fed up with how hit or miss
+our WOW! provided router was, and replaced the wireless functions of
 the offending Router/Modem abomination with a real wireless router. Somehow the
 port forwarding and DHCP reservations for my Pi were disrupted, and
-my website went down. Due to the business of this recent semester
-at school I didn&#39;t have much time/energy (except I kinda did sometimes) to deal
-with getting it back up and running. Now that I had a bit of free time between
+my website went down. Due to how busy this recent semester
+at school was, I didn&#39;t have much time/energy (except I kinda did sometimes) to deal
+with getting it back up and running. Since I had a bit of free time between
 Spring and Summer semester (almost an entire week!), I didn&#39;t have much of an
 excuse to not deal with it.</p>
 
-<p>Fortunately my four month out of date Arch Linux ARM install surved the most
+<p>Fortunately my four-month-out-of-date Arch Linux ARM install survived the most
 massive system update it will hopefully ever have to deal with, and other
 than not having enough space the first try due to an unemptied Pacman cache,
 it&#39;s up and running, happy as can be.</p>
 
 <p>Despite broken promises of real content and what not, I will still try to put
-some stuff out every now and then, even though my next two semesters at school
+some stuff out every now and then, even though my final two semesters at school
 are looking to be just as busy as my most recent ones.</p>
 
           <a href="/posts/site/2014/05/04/it-lives/">permalink</a>
@@ -164,139 +265,6 @@ Sure, I could have had links to multiple pages instead of just having &quot;next
 and &quot;previous&quot;, but who cares? That&#39;s what the <a href="/archive">archives</a> are for!</p>
 
           <a href="/posts/site/2013/12/12/comments-and-pages/">permalink</a>
-        </div>
-      </article>
-    
-      <div class="line-separator"></div>
-      <article>
-        <h2>06 Dec 2013 &raquo; Why Jekyll?</h2>
-        <div class="post">
-          <p>In my first post, I gave a couple of vague reasons why I decided to use Jekyll
-to create this website, as opposed to something like Ruby on Rails. Having 
-recently used Rails for a school project, I can understand the appeal of using such
-a framework. It can be used to create powerful dynamic web apps with a range of
-useful tools and features. But for what I wanted out of this website, Rails would 
-be like bringing a nuclear missile to a water gun fight. It&#39;s simply offers far
-more features than what I need. </p>
-
-<p>Rails gives me the chance to build my own blog platform, while Jekyll <em>is</em> a 
-blog platform, which allows me to focus on the blog itself, rather than writing 
-and maintaining everything. While it would give me complete
-control over every aspect of my website, I am simply not interested in this
-level of control for such a small website. I feel comparing
-Jekyll and Rails is not fair because they are just two  different
-tools that both happen to be able to accomplish the same task. </p>
-
-<p>Since I&#39;m far more interested in showing what I like about Jekyll than I am in 
-comparing and contrasting Jekyll and Rails, I will keep the comparisons to a minimum. </p>
-
-<p>Jekyll is as its website describes, &quot;a simple, blog-aware, static site
-generator&quot;, nothing more, nothing less. Since it&#39;s just a ruby script, issuing 
-a simple <code>gem install jekyll</code> in a terminal is all it takes to have everything 
-installed, much like Rails. Again similar to Rails, one can then generate the
-scaffolding for a new blog by issuing <code>jekyll new blog</code>.</p>
-
-<p>This is where the two diverge however, with Jekyll taking a simpler path, as
-far as blogs are concerned. Navigating into a newly generated blog directory 
-gives a simple directory structure.</p>
-
-<p><code>blog/</code></p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">_layouts/
-_posts/
-_site/
-css/
-_config.yml
-index.html
-</code></pre></div>
-<p>Even at first glance this structure is fairly simple to follow. Jekyll divides
-sites into three main components, layouts, posts, and CSS. Since each of these
-parts are constructed very differently from one another, it was a very sane
-choice to give each their own directory. </p>
-
-<p>This layout is very easy to extend as well. For example, if JavaScript is needed then all
-that needs to be done is adding a <code>js/</code> directory to the root of the blog
-directory, and it will be included in the final <code>_site/</code> folder after
-generation.</p>
-
-<p>Jekyll layouts use mainly HTML/CSS, spattered with <a href="https://github.com/Shopify/liquid/wiki/Liquid-for-Designers">Liquid Markup</a>
-that gets interpreted to HTML at build-time. Again, if this sounds somewhat similar to
-how Rails works, that&#39;s because it is.</p>
-
-<p>A good example of how this works is the following:</p>
-
-<p><code>_layouts/default.html</code></p>
-<div class="highlight"><pre><code class="html language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html&gt;</span>
-  <span class="nt">&lt;head&gt;</span>
-    <span class="nt">&lt;title&gt;</span>{{ page.title }}<span class="nt">&lt;/title&gt;</span>
-  <span class="nt">&lt;/head&gt;</span>
-  <span class="nt">&lt;body&gt;</span>
-    <span class="nt">&lt;nav&gt;</span>
-      ...
-    <span class="nt">&lt;/nav&gt;</span>
-    {{ content }}
-    <span class="nt">&lt;footer&gt;</span>
-      ...
-    <span class="nt">&lt;/footer&gt;</span>
-  <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</code></pre></div>
-<p>Then in <code>index.html</code> all that is needed is:</p>
-<div class="highlight"><pre><code class="html language-html" data-lang="html">---
-layout: default
-title: Home
----
-
-<span class="nt">&lt;p&gt;</span>Look at this snazzy navbar and footer!<span class="nt">&lt;/p&gt;</span>
-</code></pre></div>
-<p>When <code>jekyll build</code> is run, the content of <code>index.html</code> will be combined with
-<code>_layouts/default.html</code>, with the index content being placed in the <code>content</code> tag,
-and the complete page(s), along with any CSS, will be placed in the <code>_sites/</code> directory. 
-By just using the YAML front matter at the top of a page,
-any page on the website can how have the navbar and footer, eliminating
-redundancy or inconsistencies between creating multi-page websites. I found
-this to be a very simple method to create consistency, while still maintaining
-a certain level of control for each page.</p>
-
-<p>Since a huge reason to use Jekyll is for the blog features, it helps that
-creating blog posts is simple as well. Each blog post is written in markdown
-and needs to be placed in the <code>_posts/</code> directory, with each following a naming
-convention like <code>2013-12-6-why-jekyll.markdown</code>. Each post needs some YAML
-front matter for Jekyll to construct everything properly, but the rest can be
-written in pure markdown.</p>
-
-<p><code>_posts/2013-12-6-why-jekyll.markdown</code></p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">---
-layout: default
-title: &quot;Why Jekyll?&quot;
-date: 2013-12-6
-categories: posts
----
-
-I dunno, _you_ tell me!
-</code></pre></div>
-<p>Jekyll makes it very simple to extend layouts for specific purposes, such as
-dedicated pages for a post, using YAML front matter:</p>
-
-<p><code>_layouts/post.html</code></p>
-<div class="highlight"><pre><code class="html language-html" data-lang="html">---
-layout: default
----
-
-<span class="nt">&lt;h2&gt;</span>{{ page.title }}<span class="nt">&lt;/h2&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;meta&quot;</span><span class="nt">&gt;</span>{{ page.date | date_to_string }}<span class="nt">&lt;/p&gt;</span>
-
-{{ content }}
-</code></pre></div>
-<p>Now each dedicated post page can display the title and post date in a
-header just by specifying the post layout in the YAML front matter.</p>
-
-<p>Of course, Jekyll has even more to offer, like built in pagination, syntax
-highlighting, and countless plugins, but I&#39;m not about to go on and on about it
-for that long. Jekyll has so far been very pleasant to work with, and I can&#39;t
-imagine switching to anything else any time soon.</p>
-
-          <a href="/posts/site/2013/12/06/why-jekyll/">permalink</a>
         </div>
       </article>
     
