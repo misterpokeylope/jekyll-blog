@@ -90,49 +90,49 @@ webserver.</p>
 <p>For those interested, I threw together a quick bash script that more or less 
 matches the rules and chains I have in place. This must be run as root, so 
 <em>use with caution</em>.</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="c">#!/usr/bin/bash</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/usr/bin/bash</span>
 
 <span class="c"># User defined chains</span>
-<span class="nb">echo</span> <span class="s2">&quot;Setting user defined Chains&quot;</span>
+<span class="nb">echo</span> <span class="s2">"Setting user defined Chains"</span>
 iptables -N TCP
 iptables -N UDP
-<span class="nb">echo</span> <span class="s2">&quot;Done&quot;</span>
+<span class="nb">echo</span> <span class="s2">"Done"</span>
 
 <span class="c"># Set default policies</span>
-<span class="nb">echo</span> <span class="s2">&quot;Setting Policies&quot;</span>
+<span class="nb">echo</span> <span class="s2">"Setting Policies"</span>
 iptables -P FORWARD DROP
 iptables -P OUTPUT ACCEPT
-<span class="nb">echo</span> <span class="s2">&quot;Done&quot;</span>
+<span class="nb">echo</span> <span class="s2">"Done"</span>
 
 <span class="c"># Set rules</span>
-<span class="nb">echo</span> <span class="s2">&quot;Setting rules&quot;</span>
+<span class="nb">echo</span> <span class="s2">"Setting rules"</span>
 iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 iptables -A INPUT -i lo -j ACCEPT
 iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
 iptables -A INPUT -p icmp --icmp-type 8 -m conntrack --ctstate NEW -j ACCEPT
-<span class="nb">echo</span> <span class="s2">&quot;Done&quot;</span>
+<span class="nb">echo</span> <span class="s2">"Done"</span>
 
 <span class="c"># Attach TCP/UDP chains to INPUT</span>
-<span class="nb">echo</span> <span class="s2">&quot;Attaching TCP/UDP chains to INPUT&quot;</span>
+<span class="nb">echo</span> <span class="s2">"Attaching TCP/UDP chains to INPUT"</span>
 iptables -A INPUT -p udp -m conntrack --ctstate NEW -j UDP
 iptables -A INPUT -p tcp --syn -m conntrack --ctstate NEW -j TCP
-<span class="nb">echo</span> <span class="s2">&quot;Done&quot;</span>
+<span class="nb">echo</span> <span class="s2">"Done"</span>
 
 <span class="c"># Open ports for services</span>
-<span class="nb">echo</span> <span class="s2">&quot;Opening ports for HTTP, HTTPS, DNS, and SSH&quot;</span>
+<span class="nb">echo</span> <span class="s2">"Opening ports for HTTP, HTTPS, DNS, and SSH"</span>
 iptables -A TCP -p tcp --dport 80 -j ACCEPT
 iptables -A TCP -p tcp --dport 443 -j ACCEPT
 iptables -A UDP -p udp --dport 53 -j ACCEPT
 iptables -A TCP -p tcp --dport 22 -j ACCEPT
-<span class="nb">echo</span> <span class="s2">&quot;Done&quot;</span>
+<span class="nb">echo</span> <span class="s2">"Done"</span>
 
 <span class="c"># Reject everything else</span>
 iptables -P INPUT DROP
 
 <span class="c"># Save Settings</span>
-<span class="nb">echo</span> <span class="s2">&quot;Saving settings to /etc/iptables/iptables.rules&quot;</span>
+<span class="nb">echo</span> <span class="s2">"Saving settings to /etc/iptables/iptables.rules"</span>
 iptables-save /etc/iptables/iptables.rules
-<span class="nb">echo</span> <span class="s2">&quot;Done&quot;</span>
+<span class="nb">echo</span> <span class="s2">"Done"</span>
 </code></pre></div>
 <p>Of course, there is more I can do, such as disabling logins for SSH, and only
 allowing access via SSH keys. That being said, there&#39;s nothing particularly

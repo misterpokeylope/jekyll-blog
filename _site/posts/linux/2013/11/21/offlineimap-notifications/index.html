@@ -68,23 +68,23 @@ lightweight and simple to setup, but there are <a href="https://wiki.archlinux.o
 that also work.</p>
 
 <p>We can put the following in a file called <code>offlineimap-notify.sh</code>: </p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="c">#!/usr/bin/bash</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/usr/bin/bash</span>
 
 <span class="c">#run OfflineIMAP once, with quiet interface</span>
 offlineimap -o -q -u quiet
 
 <span class="c">#count new mail for every maildir</span>
-<span class="nv">maildirnew</span><span class="o">=</span><span class="s2">&quot;$HOME/Mail/*/*/new/&quot;</span>
-<span class="nv">new</span><span class="o">=</span><span class="s2">&quot;$(find $maildirnew -type f | wc -l)&quot;</span>
+<span class="nv">maildirnew</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/Mail/*/*/new/"</span>
+<span class="nv">new</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>find <span class="nv">$maildirnew</span> -type f | wc -l<span class="k">)</span><span class="s2">"</span>
 
 <span class="c">#count old mail for every maildir</span>
-<span class="nv">maildirold</span><span class="o">=</span><span class="s2">&quot;$HOME/Mail/*/*/cur/&quot;</span>
-<span class="nv">old</span><span class="o">=</span><span class="s2">&quot;$(find $maildirold -type f | wc -l)&quot;</span>
+<span class="nv">maildirold</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/Mail/*/*/cur/"</span>
+<span class="nv">old</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>find <span class="nv">$maildirold</span> -type f | wc -l<span class="k">)</span><span class="s2">"</span>
 
 <span class="k">if</span> <span class="o">[</span> <span class="nv">$new</span> -gt 0 <span class="o">]</span> 
-<span class="k">then</span>
-<span class="k">    </span><span class="nb">export </span><span class="nv">DISPLAY</span><span class="o">=</span>:0<span class="p">;</span> <span class="nb">export </span><span class="nv">XAUTHORITY</span><span class="o">=</span>~/.Xauthority<span class="p">;</span> 
-    notify-send -a <span class="s2">&quot;OfflineIMAP&quot;</span> <span class="s2">&quot;New mail!\nNew: $new Old: $old&quot;</span>
+<span class="k">then
+    </span><span class="nb">export </span><span class="nv">DISPLAY</span><span class="o">=</span>:0; <span class="nb">export </span><span class="nv">XAUTHORITY</span><span class="o">=</span>~/.Xauthority; 
+    notify-send -a <span class="s2">"OfflineIMAP"</span> <span class="s2">"New mail!</span><span class="se">\n</span><span class="s2">New: </span><span class="nv">$new</span><span class="s2"> Old: </span><span class="nv">$old</span><span class="s2">"</span>
 <span class="k">fi</span>
 </code></pre></div>
 <p>Make sure the script is executable, and put it in your <code>$PATH</code> if you wish.</p>
@@ -102,17 +102,17 @@ my mail properly. If I can find a solution to this I will create a follow-up
 post with my findings.</p>
 
 <p>We can run the script every 3 minutes with cron:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">*/3 * * * * ~/Scripts/offlineimap-notify.sh
+<div class="highlight"><pre><code class="language-" data-lang="">*/3 * * * * ~/Scripts/offlineimap-notify.sh
 </code></pre></div>
 <p>Now you should have a lovely little notification every time you get a new 
 email! Simple as that.</p>
 
 <p><a href="/mutt.png">Click for example!</a> (1024x600 728K)</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">Notes: 
+<div class="highlight"><pre><code class="language-" data-lang="">Notes: 
 
 If your OS keeps bash in /bin, then please change the shebang line 
 to reflect that. Arch Linux keeps all binaries in /usr/bin but most other 
-OS&#39; don&#39;t.
+OS' don't.
 
 Regarding my use of `find`: 
 I am aware that in general parsing the output of `find` and `ls` can be problematic 

@@ -75,7 +75,7 @@ far as blogs are concerned. Navigating into a newly generated blog directory
 gives a simple directory structure.</p>
 
 <p><code>blog/</code></p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">_layouts/
+<div class="highlight"><pre><code class="language-" data-lang="">_layouts/
 _posts/
 _site/
 css/
@@ -99,7 +99,7 @@ how Rails works, that&#39;s because it is.</p>
 <p>A good example of how this works is the following:</p>
 
 <p><code>_layouts/default.html</code></p>
-<div class="highlight"><pre><code class="html language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html&gt;</span>
   <span class="nt">&lt;head&gt;</span>
     <span class="nt">&lt;title&gt;</span>{{ page.title }}<span class="nt">&lt;/title&gt;</span>
@@ -116,7 +116,7 @@ how Rails works, that&#39;s because it is.</p>
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div>
 <p>Then in <code>index.html</code> all that is needed is:</p>
-<div class="highlight"><pre><code class="html language-html" data-lang="html">---
+<div class="highlight"><pre><code class="language-html" data-lang="html">---
 layout: default
 title: Home
 ---
@@ -140,25 +140,26 @@ front matter for Jekyll to construct everything properly, but the rest can be
 written in pure markdown.</p>
 
 <p><code>_posts/2013-12-6-why-jekyll.markdown</code></p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">---
+<div class="highlight"><pre><code class="language-" data-lang="">---
 layout: default
-title: &quot;Why Jekyll?&quot;
+title: "Why Jekyll?"
 date: 2013-12-6
 categories: posts
 ---
 
 I dunno, _you_ tell me!
+
 </code></pre></div>
 <p>Jekyll makes it very simple to extend layouts for specific purposes, such as
 dedicated pages for a post, using YAML front matter:</p>
 
 <p><code>_layouts/post.html</code></p>
-<div class="highlight"><pre><code class="html language-html" data-lang="html">---
+<div class="highlight"><pre><code class="language-html" data-lang="html">---
 layout: default
 ---
 
 <span class="nt">&lt;h2&gt;</span>{{ page.title }}<span class="nt">&lt;/h2&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;meta&quot;</span><span class="nt">&gt;</span>{{ page.date | date_to_string }}<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"meta"</span><span class="nt">&gt;</span>{{ page.date | date_to_string }}<span class="nt">&lt;/p&gt;</span>
 
 {{ content }}
 </code></pre></div>
