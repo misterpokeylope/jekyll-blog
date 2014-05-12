@@ -1,36 +1,31 @@
 @font-face {
-    font-family: "FiraSans-Regular";
-    src: url("/fonts/FiraSans-Regular.woff") format("woff");
+    font-family: "NotoSans";
+    src: url("/fonts/NotoSans.woff") format("woff");
 }
 
 @font-face { 
-    font-family: "FiraSans-Bold";
-    src: url("/fonts/FiraSans-Bold.woff") format("woff");
+    font-family: "NotoSans-Bold";
+    src: url("/fonts/NotoSans-Bold.woff") format("woff");
     font-weight: bold;
 }
 
 @font-face {
-    font-family: 'FiraMono-Regular';
-    src: url("/fonts/FiraMono-Regular.woff") format('woff');
+    font-family: 'Ubuntu-Mono';
+    src: url("/fonts/Ubuntu-Mono.woff") format('woff');
 }
 
-body {
-/*    background-color: #080808; */
 
+body {
     background-color: #DEDEDE;
-/*    color: #629FB5; */
     color: #212121;
-/*  font-family: "DejaVu Sans",Helvetica,Arial,Sans-Serif; */
-    font-family: "FiraSans-Regular", Arial, Sans-Serif;
+    font-family: "NotoSans", Arial, Sans-Serif;
     font-size: 100%;
 }
 
 /* Body Formatting */
-
 .wrapper {
     width: 900px;
     margin: auto;
-/*   background-color: #212121; */
     background-color: #F7F7F7;
     padding: 5px 10px 5px 10px;
     border-radius: 5px;
@@ -44,7 +39,7 @@ body {
 .title {
     display: inline-block;
     font-weight: bold;
-    font-family: "FiraSans-Bold";
+    font-family: "NotoSans-Bold";
     font-size: 30px;
     float: left;
 }
@@ -113,25 +108,21 @@ body {
 
 .post pre {
     border: 3px solid #858585;
-/*    background-color: #393939; */
     background-color: #F7F7F7;
     padding: .2em .3em;
 }
 
 code { 
-/*  font-family: "DejaVu Sans Mono","Lucidia Console","Monaco",monospace; */
-    font-family: "FiraMono-Regular", "Monaco", "Consolas", Monospace;
-    font-size: 80%;
+    font-family: "Ubuntu-Mono", "Monaco", "Consolas", Monospace;
+    font-size: 100%;
 }
 
 .post ul, .post ol { margin-left: 1.35em; }
 
 .post code {
-/*    border: 1px solid #336699; */
     border: 1px solid #858585;
-/*    background-color: #393939; */
     background-color: #E5E5E5;
-    padding: .2em .2em 0;
+    padding: -.1em -.1em 0;
     border-radius: 3px;
 }
 
@@ -141,9 +132,7 @@ code {
 }
 
 .post pre.terminal {
-    /* border: 3px solid #252822; */
     border: 3px solid #858585;
-    /* background-color: #393939; */
     background-color: #F7F7F7;
     color: #FFF; 
 }
