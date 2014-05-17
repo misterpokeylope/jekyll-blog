@@ -93,11 +93,11 @@ iptables -P INPUT DROP
 
 # Save Settings
 echo "Saving settings to /etc/iptables/iptables.rules"
-iptables-save /etc/iptables/iptables.rules
+iptables-save > /etc/iptables/iptables.rules
 echo "Done"
 ```
 
-Of course, there is more I can do, such as disabling logins for SSH, and only
+Of course, there is more I need to do, such as disabling logins for SSH, and only
 allowing access via SSH keys. That being said, there's nothing particularly
 interesting/useful/valuable on my Raspberry Pi in the first place.
 

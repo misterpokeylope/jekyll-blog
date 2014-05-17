@@ -42,6 +42,86 @@
     
       <div class="line-separator"></div>
       <article>
+        <h2>17 May 2014 &raquo; OmniROM</h2>
+        <div class="post">
+          <p>Like many other tech-competetent/masochistic Android users I enjoy using custom
+Android ROMs on my devices. Although my Galaxy Nexus and Nexus 10 were, and
+would have continued to be, perfectly fine running stock Android I always found
+it to be a bit lacking in a few areas, mainly in the customization department.</p>
+
+<p>On my phone, I&#39;ve always used CyanogenMod due to the (percieved) stability and
+fact that they still actively support the Sprint version of the Galaxy Nexus,
+but I&#39;ve become warry of their direction after they went commercial. Unlike my 
+phone, my Nexus 10 doesn&#39;t have any sort of critical functionality that 
+could potentially be botched by bleeding edge ROMs. I&#39;ve tried the other two 
+big players in the ROM market, but still didn&#39;t stick with them. While both are
+great choices in their own right, I found Paranoid Android and AOKP to have 
+<em>too many</em> features for my liking... </p>
+
+<p>I like to have something closer to Stock, but without a huge amount of features 
+I never use. I also tried the many offshoots of these three that frankenstein 
+a bunch of features from all three, but encountered too many stability issues, 
+or just too many unused features and component. Then while browsing the XDA 
+Developers forums, I heard about a new player: <a href="http://omnirom.org/">OmniROM</a>.</p>
+
+<p>OmniROM is developed by some of the bigger players in the Android development
+community and in many ways it is has set out to accomplish what CyanogenMod 
+is/used to be. Their goals include developing new open source software and 
+enhancements for the wider Android community to benefit from, while providing
+a simple, close to stock experience. The current nightlies are based on Android
+4.4.2, and support a healthy and growing number of devices.</p>
+
+<p>Thus far some of the more interesting features to the ROM include:</p>
+
+<ul>
+<li><strong>Multiwindow</strong> (Still in development)</li>
+<li><strong>OpenDelta:</strong> Over the air <a href="http://en.wikipedia.org/wiki/Delta_update">delta updates</a></li>
+<li><strong>OmniSwitch:</strong> A replacement for the standard Android App Switcher, with more 
+features, and a favorites list for Apps.</li>
+<li><strong>Active Display:</strong> Displays notifications on the screen, when it is off.</li>
+</ul>
+
+<p><img src="/img/omniswitch-thumb.png" alt="omniswitch"></p>
+
+<p>There&#39;s many smaller features such as being able to change the placement of the
+clock, or being able to adjust the size of the soft buttons, and a home-grown 
+file manager. However, one of the aspects I value most of this ROM is their 
+stance on Nightly Releases.</p>
+<div class="highlight"><pre><code class="language-" data-lang="">We also recognise how people use Custom ROMs – we’re all custom ROM users and
+developers ourselves – the argument that “nightlies are not for end users” is
+over-used, and no longer valid. We’ve found that the vast majority of users
+want to get nightly updates to their ROM. For that reason, nightlies aren’t a
+playground – nightlies are for new features that are finished. You should be
+able to expect the same stability and reliability from a nightly as you would
+from a “release” ROM, and can report any bugs that prevent this from happening.
+</code></pre></div>
+<p>-(<a href="http://omnirom.org/about/">About Omni</a>)</p>
+
+<p>And in the six or so months that I have been using Omni I have found this to be
+incredibly true. I&#39;ve yet to encounter any serious crash or instability while
+on any of the nightlies, which were all installed with OpenDelta. While I quite
+often have issues with OpenDelta stopping in the middle of downloading updates,
+It&#39;s always produced working updates, despite somewhat enlongated waiting. A
+word of warning however is that OpenDelta currently only supports TWRP
+recovery at this moment, since cwm doesn&#39;t officially support the scripting 
+that OpenDelta requires.</p>
+
+<p><img src="/img/opendelta-thumb.png" alt="opendelta"></p>
+
+<p>That said, OmniROM is still very much a work in progress and currently does not
+have a &quot;stable&quot; release. Despite the relative stability of the nightlies, some
+users may not be comfortable using it until a stable release has been made. But
+for those who are feeling slightly adventurous, I would wholeheartedly
+recommend giving OmniROM a shot, especially to those who are not completely
+happy with their current ROM. If nothing else, OmniROM has a ton of potential
+that is very quickly being recognized with their fast and stable releases.</p>
+
+          <a href="/posts/android/2014/05/17/omnirom/">permalink</a>
+        </div>
+      </article>
+    
+      <div class="line-separator"></div>
+      <article>
         <h2>09 May 2014 &raquo; Configuring iptables</h2>
         <div class="post">
           <p>With the recent fixing of my &quot;network issues&quot;, I have been putting more time
@@ -130,10 +210,10 @@ iptables -P INPUT DROP
 
 <span class="c"># Save Settings</span>
 <span class="nb">echo</span> <span class="s2">"Saving settings to /etc/iptables/iptables.rules"</span>
-iptables-save /etc/iptables/iptables.rules
+iptables-save &gt; /etc/iptables/iptables.rules
 <span class="nb">echo</span> <span class="s2">"Done"</span>
 </code></pre></div>
-<p>Of course, there is more I can do, such as disabling logins for SSH, and only
+<p>Of course, there is more I need to do, such as disabling logins for SSH, and only
 allowing access via SSH keys. That being said, there&#39;s nothing particularly
 interesting/useful/valuable on my Raspberry Pi in the first place.</p>
 
@@ -176,7 +256,7 @@ are looking to be just as busy as my most recent ones.</p>
 content more interesting content than changes I made to the internals of this blog.
 However, I&#39;ve reached a plateau in terms of changes I want to make, so there
 isn&#39;t much more I can even post about it. Recently I&#39;ve embedded Mozilla&#39;s <a href="http://mozilla.github.io/Fira/">Fira
-Typeface</a> in place of the user&#39;s predefined font. It should show up just
+Typeface</a> in place of the user&#39;s predefined font. The new fonts should show up just
 fine on Firefox and webkit browsers, but I have no idea about Internet Explorer other than IE11, 
 or others. Just in case there are other pleasant fallbacks in place. The site may
 load a bit slower now since it has to load the fonts, but it shouldn&#39;t be too
@@ -189,6 +269,10 @@ the Mr. Saturn font from the game Earthbound (a personal favorite of mine)!</p>
 <p><img src="/img/saturnboing.png" alt="boing"></p>
 
 <p>(font and image courtesy of <a href="http://earthboundcentral.com/2009/11/ultimate-earthbound-font-pack/">Earthbound Central</a>)</p>
+
+<p>UPDATE (12 May 2014):
+The Sans Serif font is <a href="http://www.google.com/fonts/specimen/Noto+Sans">Noto Sans</a> and the Monospaced font is <a href="https://www.google.com/fonts/specimen/Ubuntu+Mono">Ubuntu
+Mono</a></p>
 
           <a href="/posts/site/2014/01/02/new-year/">permalink</a>
         </div>
@@ -216,58 +300,6 @@ without me having to give a link out...</p>
         </div>
       </article>
     
-      <div class="line-separator"></div>
-      <article>
-        <h2>12 Dec 2013 &raquo; Comments and Pagination</h2>
-        <div class="post">
-          <p>Now that I&#39;ve done further, most likely unnoticable, refinements to this site,
-I have been tossing the idea around of adding a comments section to each of the
-permalinked posts. There seem to be a fair number of static comment plugins
-already available, so it sounds like it would be brain dead easy to add something
-simple in. I&#39;m going to avoid complicated things like Disqus since it seems
-like overkill for the &quot;whopping amount&quot; of traffic this website generates. I
-will continue looking into more static solutions, since it would make it harder
-for this place to just become a nest for spam bots.</p>
-
-<p>In other news I&#39;ve implemented/fixed pagination for this site, using Jekyll&#39;s built in 
-pagination. I&#39;ve technically had the code there the whole time, but since I had less than 
-5 posts up until now, it didn&#39;t do anything. It was broken anyways due to <code>previous</code>
-looking for <code>page1/</code>, which is not generated by my configuration. All that was
-needed was an addition if-else clause with Liquid, and everything works as
-intended. It&#39;s such a simple fix that I don&#39;t even know why Jekyll includes <a href="http://jekyllrb.com/docs/pagination/#render_the_paginated_posts">the
-broken example</a> on their page.</p>
-
-<p>For the curious out there, here&#39;s my version:</p>
-
-<p><code>index.html</code></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pagination"</span><span class="nt">&gt;</span>
-  {% if paginator.previous_page %}
-    {% if paginator.previous_page == 1 %}
-      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/"</span><span class="nt">&gt;</span>Previous<span class="nt">&lt;/a&gt;</span>
-    {% else %}
-      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"page{{ paginator.previous_page }}"</span><span class="nt">&gt;</span>Previous<span class="nt">&lt;/a&gt;</span>
-    {% endif %}
-  {% else %}
-    <span class="nt">&lt;span&gt;</span>Previous<span class="nt">&lt;/span&gt;</span>
-  {% endif %}
-  <span class="nt">&lt;span&gt;</span>Page: {{ paginator.page }} of {{ paginator.total_pages }}<span class="nt">&lt;/span&gt;</span>
-  {% if paginator.next_page %}
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"page{{ paginator.next_page }}"</span><span class="nt">&gt;</span>Next<span class="nt">&lt;/a&gt;</span>
-  {% else %}
-    <span class="nt">&lt;span&gt;</span>Next<span class="nt">&lt;/span&gt;</span>
-  {% endif %}
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
-<p>And that&#39;s really all it takes. I also tried the overly complicated fix they
-have listed below, and fought with it far more than I should have (as in I had
-to fight with it at all), and just settled on my slight modification instead.
-Sure, I could have had links to multiple pages instead of just having &quot;next&quot;
-and &quot;previous&quot;, but who cares? That&#39;s what the <a href="/archive">archives</a> are for!</p>
-
-          <a href="/posts/site/2013/12/12/comments-and-pages/">permalink</a>
-        </div>
-      </article>
-    
 
     <div class="line-separator"></div>
 
@@ -275,7 +307,7 @@ and &quot;previous&quot;, but who cares? That&#39;s what the <a href="/archive">
     <div class="post">
       
       <span class="page_number ">Page: 1 
-          of 2</span>
+          of 3</span>
       
         <a href="page2" class="next">Next</a>
       
@@ -306,7 +338,8 @@ and &quot;previous&quot;, but who cares? That&#39;s what the <a href="/archive">
           <br>
           DNS services provided by <a href="http://freedns.afraid.org/" 
               target="_blank">FreeDNS</a>. Powered by <a href="http://nginx.org/" 
-              target="_blank">nginx</a>. Built using <a
+              target="_blank">nginx</a> and <a href ="http://archlinuxarm.org/"
+              target="_blank">Arch Linux ARM</a>. Built with <a
               href="http://jekyllrb.com/" target="_blank">Jekyll</a>.
         </p>
       </div>

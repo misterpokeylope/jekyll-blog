@@ -9,7 +9,7 @@ Hopefully in the coming year I am able/willing to make more posts with
 content more interesting content than changes I made to the internals of this blog.
 However, I've reached a plateau in terms of changes I want to make, so there
 isn't much more I can even post about it. Recently I've embedded Mozilla's [Fira
-Typeface][fira] in place of the user's predefined font. It should show up just
+Typeface][fira] in place of the user's predefined font. The new fonts should show up just
 fine on Firefox and webkit browsers, but I have no idea about Internet Explorer other than IE11, 
 or others. Just in case there are other pleasant fallbacks in place. The site may
 load a bit slower now since it has to load the fonts, but it shouldn't be too
@@ -23,5 +23,11 @@ the Mr. Saturn font from the game Earthbound (a personal favorite of mine)!
 
 (font and image courtesy of [Earthbound Central][eb])
 
+UPDATE (12 May 2014):
+The Sans Serif font is [Noto Sans][noto] and the Monospaced font is [Ubuntu
+Mono][ubuntu]
+
 [fira]: http://mozilla.github.io/Fira/
 [eb]: http://earthboundcentral.com/2009/11/ultimate-earthbound-font-pack/
+[noto]: http://www.google.com/fonts/specimen/Noto+Sans
+[ubuntu]: https://www.google.com/fonts/specimen/Ubuntu+Mono

@@ -95,4 +95,4 @@ scripting myself.
 [dunst]: https://www.archlinux.org/packages/community/x86_64/dunst/
 [notify]: https://wiki.archlinux.org/index.php/Libnotify#Builtin_servers
 [aside]: https://bbs.archlinux.org/viewtopic.php?pid=1346862#p1346862
-[muttimg]: /mutt.png
+[muttimg]: /img/mutt.png
