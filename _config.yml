@@ -6,5 +6,4 @@ highlighter: pygments
 excerpt_separator: <!--more-->
 paginate: 5 
 paginate_path: "/page:num"
-gems:
-- jekyll-sitemap
+gems: [jekyll-sitemap]
