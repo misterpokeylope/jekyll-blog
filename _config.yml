@@ -2,7 +2,7 @@ name: mister-pokeylope
 url: http://www.misterpokeylope.com
 markdown: redcarpet
 permalink: pretty
-highlighter: rouge 
+highlighter: pygments 
 excerpt_separator: <!--more-->
 paginate: 5 
 paginate_path: "/page:num"
