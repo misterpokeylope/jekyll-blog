@@ -17,7 +17,7 @@ __unfortunately__, not everything works out of the box, and it requires
 patience and proactivity on the user's part.
 
 ### Installation
-<br>
+<br><br>
 
 I've mentioned the unbelievably helpful [Arch Linux Wiki][wiki] in the past, and once 
 again, it was a life saver in helping get my C720 up and running. Right off the 
@@ -49,7 +49,7 @@ until the installer is fixed, this is a much better method than using an
 outdated install medium.
 
 ### Post-Installation
-<br>
+<br><br>
 
 Installing Arch Linux was a breeze since all of the hardware needed during the 
 installation works out of the box. Unfortunately, this leads to two more parts 
