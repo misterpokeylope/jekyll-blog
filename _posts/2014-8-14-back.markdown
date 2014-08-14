@@ -1,0 +1,31 @@
+--- 
+layout: post
+title: "I'm Baaa-aaack"
+date: 2014-09-14
+categories: posts site
+---
+
+As per per usual with this blog, real life and school got in the way of 
+maintaining it, and once again it was down for an extended period of 
+time. This time, due to moving to a new house, and not having room to properly 
+set up my Raspberry Pi in an already overcrowded meadia center setup. So with 
+that I've, somewhat sadly, decided to ditch the Raspberry Pi altogether, since 
+it was starting to cause more annoyance than benefit.
+
+Instead I've moved my entire website to GitHub's [Pages][pages] hosting. 
+The obvious benefits of this are the consistent uptime along with Jekyll 
+integration, allowing me to keep my blog exactly the way it was before. In fact 
+nobody would even know that I had switched hosting if I hadn't said anything. 
+The transition was more or less pretty smooth, barring a couple of DNS related 
+configuration issues. Since all of my webiste files were already on GitHub, all 
+I had to change it to a GitHub Pages website was to rename the repository to 
+`misterpokeylope.github.io` and GitHub's servers did all of the magic. From 
+there, replacing my old A records with a CNAME entry on FreeDNS was all I 
+needed to do to get my domain name to point to the new host, and from there 
+everything was golden...once I finally figured out how to properly get the 
+redirect working.
+
+Now that I have this website up and running for good, I'll probably write some
+new posts, specifically about using Arch Linux on the Acer C720 Chromebook.
+
+[pages]: https://pages.github.com/
