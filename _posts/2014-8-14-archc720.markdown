@@ -64,7 +64,7 @@ provides this touchpad patch.
 The last true issue with the C720 was and still is getting suspend/resume to 
 work properly. On the 3.15 kernel and below, this did not seem to work at all 
 without a number of hacks, but in 3.16, all I needed to do was pass 
-"tpm_tis.force=1" as a kernel parameter in Grub. However, thanks to 
+`tpm_tis.force=1` as a kernel parameter in Grub. However, thanks to 
 [scot14's patch][patch] this is no longer needed, and this patch is now included 
 in parched's linux-mainline-chromebook. 
 
