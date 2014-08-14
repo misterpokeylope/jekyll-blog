@@ -18,8 +18,8 @@ integration, allowing me to keep my blog exactly the way it was before. In fact
 nobody would even know that I had switched hosting if I hadn't said anything. 
 The transition was more or less pretty smooth, barring a couple of DNS related 
 configuration issues. Since all of my webiste files were already on GitHub, all 
-I had to change it to a GitHub Pages website was to rename the repository to 
-`misterpokeylope.github.io` and GitHub's servers did all of the magic. From 
+I had to do to change it to a GitHub Pages website was to rename the repository 
+to `misterpokeylope.github.io` and GitHub's servers did all of the magic. From 
 there, replacing my old A records with a CNAME entry on FreeDNS was all I 
 needed to do to get my domain name to point to the new host, and from there 
 everything was golden...once I finally figured out how to properly get the 
