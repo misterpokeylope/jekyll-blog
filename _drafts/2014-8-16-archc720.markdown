@@ -1,0 +1,109 @@
+--- 
+layout: post
+title: "Arch Linux on the Acer C720 Chromebook: Part 2"
+date: 2014-08-16
+categories: posts linux
+---
+
+With Arch Linux installed, it took very little time to get my configuration to 
+the way that I had it on my old Asus eeePC. That said, I didn't have a fairly 
+complicated setup to begin with.
+
+### Configuration
+
+One of the biggest reasons I chose the Acer C720, over possibly one of Acer or 
+Asus' budget laptops with similar specs, was the touted battery life of the 
+machine, that usually clocks in around 7-8 hours on a full charge. Fortunately, 
+this can easily be achieved in Arch Linux with a Power Management service. I 
+personally use `TLP` for it's focus on laptops, and sane defaults. I didn't 
+even have to make any changes to TLP's default configuration, and I can easily 
+get the advertised run time, unless I'm running an unusally large workload.
+
+One of the other differences Chromebooks have from their Laptop/Ultrabook 
+brethren, are their non-standard keyboards. For starters, the top row has only 10  
+function keys, meant for browser functions and volume/brightness adjustments.
+The C720 in particular also lacks dedicated `Page Up/Down`, `Delete`, `Insert`, `Home`, 
+and `End` buttons, in order to save space on it's already small keyboard, something 
+not unusal for laptops of it's size, but it also does not include `Fn` key combos 
+to make up for this, unlike most machines that lack these buttons. Fortunately, 
+the last difference is more of a positive change; that change being the complete 
+removal of the `Caps Lock` button, and replacing it with a dedicated "search" 
+key. In Chrome OS this would pull up a search box, but on Arch Linux, it's 
+recognized as the `super`/`windows` key.
+
+[keyboard picture here]
+
+This atypical keyboard setup means that most users, including me, prefer to make some 
+modifications to the defualt configuration. In Arch Linux, the "media keys" act as
+normal function keys (in Chrome OS they are technically function keys too, just 
+remapped to perform the media functions), but I wanted to have some of them perform 
+their media key functions instead. Since I don't use a DE that would automatically
+map these, I had to do a bit of extra configuration. Fortunately, *S*imple *x* 
+*h*otkey *d*aemon ([sxhkd][sxhkd]) makes this very simple to do. The setup I 
+wanted only needed a slight modification from the one shown in the 
+[Acer C720 Arch Wiki][wiki] page for it to work with my i3 configuration.
+
+`~/.config/sxhkd/sxhkdrc`
+```bash
+# toggle fullscreen in i3
+@F4
+  xte 'keydown Alt_L' 'key f' 'keyup Alt_L'
+ 
+#toggle container layout in i3
+@F5
+  xte 'keydown Alt_L' 'key x' 'keyup Alt_L'
+  
+{F6,F7}
+  xbacklight -{dec,inc} 10
+
+F8
+  amixer set Master toggle
+
+{F9,F10}
+  amixer set Master 5{-,+} unmute
+```
+
+Adding in the missing `Page Up/Down`, `Delete`, etc functionality however has 
+been much trickier than I expected, and I currently don't have it working. 
+When using `sxhkd` to execute an `xte` command for `Page Up/Down`, X11 doesn't 
+seem to register the action, and nothing happens. This is most likely due to 
+how xte works, since `xkvbd` is able to properly emulate a `Page Up/Down` event 
+at least in graphical apps (it does not work in my terminal). If or when I 
+figure out a workaround, I will write about it.
+
+Since I only have 32GB of space on the SSD, I settled on a 32GB Sandisk Cruzer 
+Fit USB flash drive, mainly for it's very small form factor. Since it protrudes 
+only a cm or so, I can keep it in the machine at all times. To make it more 
+easily accessible from within Arch, I installed 
+[Lightweight Device Mounter (ldm)][ldm] to automount it at boot. My main reason 
+for choosing ldm was the fact that it can use user specified mount points, since 
+I wanted this drive to be directly accessible from my `/home` directory. I 
+could have also used systemd's automount capabilities, but with ldm I could
+instead have any arbitrary flash drive or external HDD I use also be accessible 
+from my `/home` directory, which I found to be a more attractive prospect. 
+
+The only real downside of keeping the flash drive plugged in in at all times is that 
+SeaBIOS automatically tries to boot usb drives before the SSD, so if I have it in,
+in addition to having to do `Ctrl + l` to start SeaBIOS, I also need to press 
+`Esc` and select the SSD instead of the USB drive. From what I have read, this
+is something that has to be configured in SeaBIOS at compile time, and then
+reflashed, an not an option that I can toggle. A minor annoyance, but still 
+an annoyance none the less.
+
+As I mentioned earlier, I do not use a Desktop Environment, or a display manager 
+for my GUI needs. I currently use i3, started from a TTY, more out of preference 
+than necessity, since other have reported GNOME and KDE running happily on this 
+machine. Since most of the time my workflow consists of Firefox, and a terminal 
+window with `tmux` running, I so rarely ever run into an issue with only having 
+2GB of RAM, that I don't even have any sort of swap enabled. 
+
+[i3 screenshot]
+
+In the 2 months I've owned this machine, I have had a largely positive 
+experience running Arch Linux on it. Despite the inial hurdles of getting 
+everything up and running, the Acer C720 makes a fantastic Linux machine,
+all things considered. 
+
+[ldm]: https://bbs.archlinux.org/viewtopic.php?id=125918
+[sxhkd]: https://wiki.archlinux.org/index.php/Sxhkd
+[wiki]: https://wiki.archlinux.org/index.php/Acer_C720_Chromebook#Sxhkd_configuration
