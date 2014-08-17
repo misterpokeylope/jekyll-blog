@@ -44,6 +44,7 @@ wanted only needed a slight modification from the one shown in the
 [Acer C720 Arch Wiki][wiki] page for it to work with my i3 configuration.
 
 `~/.config/sxhkd/sxhkdrc`
+
 ```bash
 \# toggle fullscreen in i3
 @F4
