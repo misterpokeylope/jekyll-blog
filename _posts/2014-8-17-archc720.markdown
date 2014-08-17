@@ -1,7 +1,7 @@
 --- 
 layout: post
 title: "Arch Linux on the Acer C720 Chromebook: Part 2"
-date: 2014-08-16
+date: 2014-08-17
 categories: posts linux
 ---
 
@@ -31,7 +31,7 @@ removal of the `Caps Lock` button, and replacing it with a dedicated "search"
 key. In Chrome OS this would pull up a search box, but on Arch Linux, it's 
 recognized as the `super`/`windows` key.
 
-[keyboard picture here]
+[![keyboard](/img/acerc720keyboardthumb.jpg)](/img/acerc720keyboard.jpg)
 
 This atypical keyboard setup means that most users, including me, prefer to make some 
 modifications to the defualt configuration. In Arch Linux, the "media keys" act as
@@ -97,7 +97,7 @@ machine. Since most of the time my workflow consists of Firefox, and a terminal
 window with `tmux` running, I so rarely ever run into an issue with only having 
 2GB of RAM, that I don't even have any sort of swap enabled. 
 
-[i3 screenshot]
+[![i3wm](/img/i3wmthumb.png)](/img/i3wm.png)
 
 In the 2 months I've owned this machine, I have had a largely positive 
 experience running Arch Linux on it. Despite the inial hurdles of getting 
