@@ -9,7 +9,7 @@ With Arch Linux installed, it took very little time to get my configuration to
 the way that I had it on my old Asus eeePC. That said, I didn't have a fairly 
 complicated setup to begin with.
 
-### Configuration
+#### Configuration
 
 One of the biggest reasons I chose the Acer C720, over possibly one of Acer or 
 Asus' budget laptops with similar specs, was the touted battery life of the 
@@ -45,11 +45,11 @@ wanted only needed a slight modification from the one shown in the
 
 `~/.config/sxhkd/sxhkdrc`
 ```bash
-# toggle fullscreen in i3
+\# toggle fullscreen in i3
 @F4
   xte 'keydown Alt_L' 'key f' 'keyup Alt_L'
  
-#toggle container layout in i3
+\#toggle container layout in i3
 @F5
   xte 'keydown Alt_L' 'key x' 'keyup Alt_L'
   
