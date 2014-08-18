@@ -8,9 +8,8 @@ categories: posts linux
 For the past few years my main mobile workhorse has been a circa 2010 Asus
 eeePC netbook, running Arch Linux. I purchased it used a few years back after a
 increasing need to bring my computer with me to school, and the genuine
-discomfort of toting around the 17-inch laptop I use at home. While it's a
-wonderful machine, courtesy of Lenovo, it wasn't the most forward thinking of
-purchases.
+discomfort of toting around 17-inch Lenovo laptop I use at home. While it's a
+wonderful machine, it wasn't the most forward thinking of purchases.
 
 Forward to this summer, where I am currently taking Summer Semester classes,
 and where two of which involve developing Android applications. In the

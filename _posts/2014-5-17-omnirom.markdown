@@ -47,16 +47,16 @@ clock, or being able to adjust the size of the soft buttons, and a home-grown
 file manager. However, one of the aspects I value most of this ROM is their 
 stance on Nightly Releases.
 
-```
-We also recognise how people use Custom ROMs – we’re all custom ROM users and
-developers ourselves – the argument that “nightlies are not for end users” is
-over-used, and no longer valid. We’ve found that the vast majority of users
-want to get nightly updates to their ROM. For that reason, nightlies aren’t a
-playground – nightlies are for new features that are finished. You should be
-able to expect the same stability and reliability from a nightly as you would
-from a “release” ROM, and can report any bugs that prevent this from happening.
-```
--([About Omni][about])
+
+>We also recognise how people use Custom ROMs – we’re all custom ROM users and
+>developers ourselves – the argument that “nightlies are not for end users” is
+>over-used, and no longer valid. We’ve found that the vast majority of users
+>want to get nightly updates to their ROM. For that reason, nightlies aren’t a
+>playground – nightlies are for new features that are finished. You should be
+>able to expect the same stability and reliability from a nightly as you would
+>from a “release” ROM, and can report any bugs that prevent this from happening.
+>
+>-([About Omni][about])
 
 And in the six or so months that I have been using Omni I have found this to be
 incredibly true. I've yet to encounter any serious crash or instability while

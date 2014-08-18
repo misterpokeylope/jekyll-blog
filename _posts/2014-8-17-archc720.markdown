@@ -33,7 +33,7 @@ recognized as the `super`/`windows` key.
 
 [![keyboard](/img/acerc720keyboardthumb.jpg)](/img/acerc720keyboard.jpg)
 
-([Image courtesy of Ars Technica][ars])
+([Image provided by Ars Technica][ars])
 
 This atypical keyboard setup means that most users, including me, prefer to make some 
 modifications to the defualt configuration. In Arch Linux, the "media keys" act as
