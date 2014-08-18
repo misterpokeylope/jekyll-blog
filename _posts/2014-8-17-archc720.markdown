@@ -40,8 +40,8 @@ modifications to the default configuration. In Arch Linux, the "media keys" act 
 normal function keys (in Chrome OS they are technically function keys too, just 
 remapped to perform the media functions), but I wanted to have some of them perform 
 their media key functions instead. Since I don't use a DE that would automatically
-map these, I had to do a bit of extra configuration. Fortunately, _S_imple _x_ 
-_h_ot_k_ey _d_aemon ([sxhkd][sxhkd]) makes this very simple to do. The setup I 
+map these, I had to do a bit of extra configuration. Fortunately, __S__imple __x__ 
+__h__ot__k__ey __d__aemon ([sxhkd][sxhkd]) makes this very simple to do. The setup I 
 wanted only needed a slight modification from the one shown in the 
 [Acer C720 Arch Wiki][wiki] page for it to work with my i3 configuration.
 
