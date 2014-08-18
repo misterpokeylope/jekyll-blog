@@ -33,6 +33,8 @@ recognized as the `super`/`windows` key.
 
 [![keyboard](/img/acerc720keyboardthumb.jpg)](/img/acerc720keyboard.jpg)
 
+([Image courtesy of Ars Technica][ars])
+
 This atypical keyboard setup means that most users, including me, prefer to make some 
 modifications to the defualt configuration. In Arch Linux, the "media keys" act as
 normal function keys (in Chrome OS they are technically function keys too, just 
@@ -46,11 +48,11 @@ wanted only needed a slight modification from the one shown in the
 `~/.config/sxhkd/sxhkdrc`
 
 ```bash
-\# toggle fullscreen in i3
+# toggle fullscreen in i3
 @F4
   xte 'keydown Alt_L' 'key f' 'keyup Alt_L'
  
-\#toggle container layout in i3
+#toggle container layout in i3
 @F5
   xte 'keydown Alt_L' 'key x' 'keyup Alt_L'
   
@@ -105,6 +107,7 @@ experience running Arch Linux on it. Despite the inial hurdles of getting
 everything up and running, the Acer C720 makes a fantastic Linux machine,
 all things considered. 
 
+[ars]: http://arstechnica.com/gadgets/2013/10/review-acer-and-haswell-give-chrome-os-the-battery-life-it-deserves/
 [ldm]: https://bbs.archlinux.org/viewtopic.php?id=125918
 [sxhkd]: https://wiki.archlinux.org/index.php/Sxhkd
 [wiki]: https://wiki.archlinux.org/index.php/Acer_C720_Chromebook#Sxhkd_configuration
