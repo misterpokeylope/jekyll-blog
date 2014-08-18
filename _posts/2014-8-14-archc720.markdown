@@ -11,7 +11,7 @@ robust that initially expected thanks to the Crouton project, I still needed
 more functionality and control over my machine. Naturally, I wanted to use 
 Arch Linux on it, as I had been doing on my other machines since I started using 
 it a few years ago. Fortunately, due to the low cost nature of Chromebooks, 
-most ship with fairly standard hardware on the inside, making them highly 
+most ship with fairly standard hardware on the inside, making them largely 
 comaptible with most Linux distros. Arch Linux was no exception to this, but 
 __unfortunately__, not everything works out of the box, and it requires 
 patience and proactivity on the user's part.
@@ -19,7 +19,7 @@ patience and proactivity on the user's part.
 #### Installation
 
 I've mentioned the unbelievably helpful [Arch Linux Wiki][wiki] in the past, and once 
-again, it was a life saver in helping get my C720 up and running. Right off the 
+again, it was a life saver in helping get Arch up and running on my C720. Right off the 
 bat one of the biggest differences from using a Chromebook is that they use 
 [Coreboot][coreboot] instead of a traditional BIOS to boot the system. As far as 
 I know, nobody as successfully reported getting a standard Linux disto to boot 
@@ -36,8 +36,8 @@ While the actual installation procedure for Arch Linux itself didn't require
 any special modifications, other than needing to use Grub instead of syslinux[\[1\]][syslinux], 
 getting the 64-bit version of the installed working required a bit more work than the 32-bit 
 version. But hey, this is Arch Linux, and ideally I should never have to 
-reinstall it again after this. Due to a [bug][bug] in the 64-bit Arch Linux 
-installer the C720, and other Chromebooks, fail to boot when choosing 64-bit mode. 
+reinstall it again after this. Due to a [bug][bug] in recent 64-bit Arch Linux 
+install mediums the C720, and other Chromebooks, fail to boot after selecting 64-bit mode. 
 Pending an actual fix there are two workarounds for this, only one of 
 which existed when I did my install. I had to use an older version of the install 
 medium that was confirmed to work with 64-bit mode, and just refresh the developer 
@@ -51,7 +51,7 @@ outdated install medium.
 
 Installing Arch Linux was a breeze since all of the hardware needed during the 
 installation works out of the box. Unfortunately, this leads to two more parts 
-of the machine that still don't work out of the box; the touchpad and suspending. 
+of the machine that still don't work out of the box yet; the touchpad and suspend/resume. 
 For what it's worth, the C720 is not alone in the touchpad issue, since the 
 recent Toshiba, HP, and Dell chromebooks also needed the same fix to get their 
 touchpads working. The issue was that the Chromebook drivers in the Kernel needed 
@@ -61,20 +61,18 @@ be in the 3.17 release. Until then, I have been using parched's
 [linux-mainline-chromebook][kernel] package in the AUR, which among other things, 
 provides this touchpad patch.
 
-The last true issue with the C720 was and still is getting suspend/resume to 
+The last true issue with the C720 was, and still is, getting suspend/resume to 
 work properly. On the 3.15 kernel and below, this did not seem to work at all 
 without a number of hacks, but in 3.16, all I needed to do was pass 
 `tpm_tis.force=1` as a kernel parameter in Grub. However, thanks to 
 [scot14's patch][patch] this is no longer needed, and this patch is now included 
-in parched's linux-mainline-chromebook. 
+in parched's linux-mainline-chromebook. So far there's no word on the state 
+of suspend/resume in the 3.17 kernel
 
 Much thanks goes to parched and scot14 for their work in helping get these post 
 installation issues worked out.
 
-While these issues may sound like a deal breaker for this machine, I have 
-otherwise found it very pleasant to use, thanks to the efforts 
-of other, much more competent, people doing the hard work to get Linux working 
-properly. There are still a couple of other outstanding, most likely 
+There are still a couple of other outstanding, most likely 
 not C720 exclusive, issues such as occasional GPU hangs that currently have no 
 real fix yet. However at this point, none of these issues hinder me from 
 using this machine as a daily driver. While I wouldn't recommend it, even to 

@@ -15,33 +15,33 @@ One of the biggest reasons I chose the Acer C720, over possibly one of Acer or
 Asus' budget laptops with similar specs, was the touted battery life of the 
 machine, that usually clocks in around 7-8 hours on a full charge. Fortunately, 
 this can easily be achieved in Arch Linux with a Power Management service. I 
-personally use `TLP` for it's focus on laptops, and sane defaults. I didn't 
+usually use TLP for it's focus on laptops, and sane defaults. For the C720 I didn't 
 even have to make any changes to TLP's default configuration, and I can easily 
 get the advertised run time, unless I'm running an unusally large workload.
 
 One of the other differences Chromebooks have from their Laptop/Ultrabook 
-brethren, are their non-standard keyboards. For starters, the top row has only 10  
+brethren, are their non-standard keyboards. For starters, the top row has only 10 
 function keys, meant for browser functions and volume/brightness adjustments.
-The C720 in particular also lacks dedicated `Page Up/Down`, `Delete`, `Insert`, `Home`, 
+The C720 in particular also lacks dedicated `Pg Up/Down`, `Delete`, `Insert`, `Home`, 
 and `End` buttons, in order to save space on it's already small keyboard, something 
-not unusal for laptops of it's size, but it also does not include `Fn` key combos 
+not unusal for laptops of it's size, but it also does not include `Fn` hardcoded key combos 
 to make up for this, unlike most machines that lack these buttons. Fortunately, 
 the last difference is more of a positive change; that change being the complete 
 removal of the `Caps Lock` button, and replacing it with a dedicated "search" 
 key. In Chrome OS this would pull up a search box, but on Arch Linux, it's 
-recognized as the `super`/`windows` key.
+recognized as the `Super`/`Windows` key.
 
 [![keyboard](/img/acerc720keyboardthumb.jpg)](/img/acerc720keyboard.jpg)
 
 ([Image provided by Ars Technica][ars])
 
 This atypical keyboard setup means that most users, including me, prefer to make some 
-modifications to the defualt configuration. In Arch Linux, the "media keys" act as
+modifications to the default configuration. In Arch Linux, the "media keys" act as
 normal function keys (in Chrome OS they are technically function keys too, just 
 remapped to perform the media functions), but I wanted to have some of them perform 
 their media key functions instead. Since I don't use a DE that would automatically
-map these, I had to do a bit of extra configuration. Fortunately, *S*imple *x* 
-*h*otkey *d*aemon ([sxhkd][sxhkd]) makes this very simple to do. The setup I 
+map these, I had to do a bit of extra configuration. Fortunately, _S_imple _x_ 
+_h_ot_k_ey _d_aemon ([sxhkd][sxhkd]) makes this very simple to do. The setup I 
 wanted only needed a slight modification from the one shown in the 
 [Acer C720 Arch Wiki][wiki] page for it to work with my i3 configuration.
 
@@ -66,9 +66,9 @@ F8
   amixer set Master 5{-,+} unmute
 ```
 
-Adding in the missing `Page Up/Down`, `Delete`, etc functionality however has 
+Adding in the missing `Page Up/Down`, `Delete`, etc., functionality however has 
 been much trickier than I expected, and I currently don't have it working. 
-When using `sxhkd` to execute an `xte` command for `Page Up/Down`, X11 doesn't 
+When using `sxhkd` to execute an `xte` command for `Page Up/Down`, X doesn't 
 seem to register the action, and nothing happens. This is most likely due to 
 how xte works, since `xkvbd` is able to properly emulate a `Page Up/Down` event 
 at least in graphical apps (it does not work in my terminal). If or when I 

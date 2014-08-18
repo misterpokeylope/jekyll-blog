@@ -5,7 +5,7 @@ date: 2014-08-13
 categories: posts site
 ---
 
-As per per usual with this blog, real life and school got in the way of 
+As per usual with this blog, real life and school got in the way of 
 maintaining it, and once again it was down for an extended period of 
 time. This time, due to moving to a new house, and not having room to properly 
 set up my Raspberry Pi in an already overcrowded meadia center setup. So with 
@@ -22,8 +22,7 @@ I had to do to change it to a GitHub Pages website was to rename the repository
 to `misterpokeylope.github.io` and GitHub's servers did all of the magic. From 
 there, replacing my old A records with a CNAME entry on FreeDNS was all I 
 needed to do to get my domain name to point to the new host, and from there 
-everything was golden...once I finally figured out how to properly get the 
-redirect working.
+everything was golden.
 
 Now that I have this website up and running for good, I'll probably write some
 new posts, specifically about using Arch Linux on the Acer C720 Chromebook.
