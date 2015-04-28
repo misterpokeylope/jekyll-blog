@@ -98,6 +98,14 @@ body {
     color: #aaa;
 }
 
+.pageinate {
+    float: right;
+    clear: right;
+    width: 80%;
+    padding-top: 20px;
+    text-align: justify;
+}
+
 .post {
     float: left;
     clear: left;
