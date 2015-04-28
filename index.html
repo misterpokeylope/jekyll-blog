@@ -5,6 +5,22 @@ title: mister-pokeylope
 
 <section>
   <div class="wrapper">
+    <div class="post">
+      {% if paginator.previous_page %}
+        {% if paginator.previous_page == 1" %}
+          <a href="/" class="previous">Previous</a>
+        {% else %}
+          <a href="/page{{ paginator.previous_page }}" 
+              class="previous">Previous</a>
+        {% endif %}
+      {% endif %}
+      <span class="page_number ">Page: {{ paginator.page }} 
+          of {{ paginator.total_pages }}</span>
+      {% if paginator.next_page %}
+        <a href="/page{{ paginator.next_page }}" class="next">Next</a>
+      {% endif %}
+    </div>
+    
     <h1>Blog Posts</h1>
     {% for post in paginator.posts %}
       <div class="line-separator"></div>
