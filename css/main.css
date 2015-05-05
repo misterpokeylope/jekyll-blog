@@ -193,7 +193,7 @@ a:hover {
     text-decoration: none;
     font-weight: bold;
     padding: 3px;
-    transition: color 0.1s linear;
+    transition: color 0.3s linear;
     -webkit-transition: color 0.1s linear;
     border-bottom: 3px solid #007AA3;
 }
