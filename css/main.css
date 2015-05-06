@@ -19,6 +19,7 @@ body {
     background-color: #DEDEDE;
     color: #212121;
     font-family: "NotoSans", Arial, Sans-Serif;
+    font-size: 95%;
 }
 
 /* Body Formatting */
@@ -192,8 +193,8 @@ a:hover {
     text-decoration: none;
     font-weight: bold;
     padding: 3px;
-    transition: color 0.3s linear;
-    -webkit-transition: color 0.3s linear;
+    transition: color 0.2s linear;
+    -webkit-transition: color 0.2s linear;
     border-bottom: 3px solid #007AA3;
 }
 
@@ -205,16 +206,16 @@ a:hover {
     text-decoration: none;
     font-weight: bold;
     padding: 3px;
-    transition: color 0.3s linear;
-    -webkit-transition: color 0.3s linear;
+    transition: color 0.2s linear;
+    -webkit-transition: color 0.2s linear;
     border-bottom: 3px solid #33B5E5;
 }
 
 .nav-link:hover, .nav-link:active {
     color: #33b5e5;
     border-bottom: 3px solid #33B5E5;
-    transition: border 0.3s ease;
-    -webkit-transition: border 0.3s ease;
+    transition: border 0.2s ease;
+    -webkit-transition: border 0.2s ease;
 
 }
 
