@@ -128,7 +128,7 @@ code {
 
 .post ul, .post ol { margin-left: 1.35em; }
 
-.post code {
+.post p code {
     border: 1px solid #858585;
     background-color: #E5E5E5;
     border-radius: 3px;
