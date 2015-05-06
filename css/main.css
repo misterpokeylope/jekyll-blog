@@ -124,6 +124,7 @@ body {
 code { 
     font-family: "Ubuntu-Mono", "Monaco", "Consolas", Monospace;
     font-size: 90%;
+    white-space: nowrap;
 }
 
 .post ul, .post ol { margin-left: 1.35em; }
