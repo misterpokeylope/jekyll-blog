@@ -40,12 +40,12 @@ body {
     display: inline-block;
     font-weight: bold;
     font-family: "NotoSans-Bold";
-    font-size: 30px;
+    font-size: 120%;
     float: left;
 }
 
 .foot {
-    font-size: 10px;
+    font-size: 60%;
     text-decoration: none;
     float: right;
     width: 700px;
